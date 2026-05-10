@@ -17,7 +17,7 @@ design-md/<slug>/
 └── preview-dark.html ← 暗色预览页
 ```
 
-## 可用品牌完整列表（58个）
+## 可用品牌完整列表（59个）
 
 **AI & 机器学习**：claude, cohere, elevenlabs, minimax, mistral.ai, ollama, opencode.ai, replicate, runwayml, together.ai, x.ai
 
@@ -32,6 +32,8 @@ design-md/<slug>/
 **企业 & 消费品**：airbnb, apple, ibm, nvidia, spacex, spotify, uber
 
 **汽车品牌**：bmw, ferrari, lamborghini, renault, tesla
+
+**咨询服务**：uperform
 
 ## 工作流程
 
