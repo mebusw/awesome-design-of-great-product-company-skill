@@ -74,6 +74,9 @@ design-md/<品牌>/
 ### 汽车品牌
 `bmw` · `ferrari` · `lamborghini` · `renault` · `tesla`
 
+### 咨询服务
+`scrum-alliance` · `uperform`
+
 ---
 
 ## 与 AI Agent 配合使用
