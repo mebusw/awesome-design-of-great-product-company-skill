@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPerform 优普丰 设计系统 — 暗色预览</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Primary: Navy */
+    --up-navy-deepest: #041C32;
+    --up-navy-dark: #062B4D;
+    --up-navy: #083A67;
+    --up-navy-base: #0A477E;
+    /* Secondary: Steel Blue */
+    --up-steel-dark: #2E4C6D;
+    --up-steel-mid: #395E87;
+    --up-steel: #4471A2;
+    --up-steel-light: #4F82BA;
+    /* Accent: Coral */
+    --up-coral-dark: #C67861;
+    --up-coral-mid: #CB7B64;
+    --up-coral: #E78C72;
+    --up-coral-light: #FF9B7D;
+    /* Warm Neutral: Beige */
+    --up-beige-dark: #C8BCA4;
+    --up-beige-mid: #D9CCB2;
+    --up-beige-light: #F1E2C5;
+    --up-beige-pale: #FFF0D1;
+    /* Cool Neutral: Grey */
+    --up-grey-dark: #848484;
+    --up-grey-mid: #A5A5A5;
+    --up-grey: #BBBBBB;
+    --up-grey-light: #D2D2D2;
+    --up-grey-pale: #DDDDDD;
+    --up-white: #FFFFFF;
+    /* Dark Text */
+    --up-near-black: #283030;
+    --up-dark-grey: #535353;
+    --up-text-muted: #A7A7A7;
+
+    --font: 'Noto Sans SC', 'Source Sans Pro', 'Microsoft YaHei', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--up-navy-deepest);
+    color: var(--up-white);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Navigation */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background: rgba(4, 28, 50, 0.95);
+    backdrop-filter: saturate(180%) blur(20px);
+    color: var(--up-white);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-brand {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--up-white);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--up-beige-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--up-white); }
+  .nav-cta {
+    display: inline-block;
+    background: var(--up-coral-light);
+    color: var(--up-white);
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 80px 32px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--up-navy-deepest) 0%, var(--up-navy) 60%, var(--up-navy-base) 100%);
+    color: var(--up-white);
+  }
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    font-size: 18px;
+    color: var(--up-beige-mid);
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .accent-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--up-coral-light), var(--up-coral));
+    margin-bottom: 48px;
+  }
+
+  /* Buttons Row */
+  .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* Section */
+  .section {
+    padding: 48px 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--up-coral-light);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--up-white);
+    margin-bottom: 32px;
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 0;
+  }
+
+  /* Color Grid */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .color-swatch {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .color-swatch-block { height: 60px; width: 100%; }
+  .color-swatch-info { padding: 10px 12px; background: rgba(255,255,255,0.05); }
+  .color-swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; color: var(--up-white); }
+  .color-swatch-hex { font-size: 11px; color: var(--up-beige-mid); font-family: monospace; }
+  .color-swatch-role { font-size: 10px; color: var(--up-grey-mid); margin-top: 2px; }
+  .color-group-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--up-coral-light);
+    margin: 28px 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Typography Sample */
+  .type-sample {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .type-sample:last-child { border-bottom: none; }
+  .type-meta {
+    font-size: 11px;
+    color: var(--up-grey-mid);
+    margin-top: 6px;
+    font-family: monospace;
+  }
+
+  /* Button Row */
+  .button-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+  .button-item { text-align: center; }
+  .button-label {
+    font-size: 10px;
+    color: var(--up-grey-mid);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Card Grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .card {
+    background: var(--up-navy);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .card-dark {
+    background: var(--up-navy-deepest);
+    color: var(--up-white);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .card-warm {
+    background: var(--up-beige-pale);
+    border-left: 4px solid var(--up-coral-light);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+  }
+  .card-info {
+    background: rgba(79, 130, 186, 0.15);
+    border-left: 4px solid var(--up-steel-light);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+  }
+  .card h3 { font-size: 16px; font-weight: 600; color: var(--up-white); margin-bottom: 8px; }
+  .card p { font-size: 13px; color: var(--up-beige-mid); }
+  .card-warm h3 { color: var(--up-navy); }
+  .card-warm p { color: var(--up-dark-grey); }
+
+  /* Badge */
+  .badge-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px; }
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .badge-primary { background: var(--up-navy); color: var(--up-white); }
+  .badge-accent { background: var(--up-coral-light); color: var(--up-white); }
+  .badge-sky { background: #519FFD; color: var(--up-white); }
+  .badge-warm { background: var(--up-beige-pale); color: var(--up-coral-dark); border: 1px solid var(--up-coral-light); }
+
+  /* Spacing Row */
+  .spacing-row { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+  .spacing-item { text-align: center; }
+  .spacing-block { background: var(--up-coral-light); border-radius: 4px; margin-bottom: 6px; }
+  .spacing-value { font-size: 10px; color: var(--up-grey-mid); font-family: monospace; }
+
+  /* Radius Row */
+  .radius-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 32px; }
+  .radius-item { text-align: center; }
+  .radius-box {
+    width: 56px;
+    height: 56px;
+    background: var(--up-steel);
+    border: 1px solid rgba(255,255,255,0.15);
+    margin-bottom: 6px;
+  }
+  .radius-label { font-size: 10px; color: var(--up-grey-mid); font-family: monospace; }
+
+  /* Elevation */
+  .elevation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .elevation-card {
+    background: var(--up-navy);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .elevation-card--shadow {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .elevation-label { font-size: 14px; font-weight: 600; color: var(--up-white); margin-bottom: 4px; }
+  .elevation-desc { font-size: 11px; color: var(--up-grey-mid); font-family: monospace; }
+
+  /* Form */
+  .form-group { margin-bottom: 20px; max-width: 400px; }
+  .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--up-beige-mid); margin-bottom: 6px; }
+  .form-input {
+    width: 100%;
+    background: var(--up-navy);
+    color: var(--up-white);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-family: var(--font);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--up-coral-light); }
+  .form-input--error { border-color: var(--up-coral); }
+  .form-input::placeholder { color: var(--up-grey-mid); }
+
+  /* Footer */
+  .footer {
+    padding: 32px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 13px;
+    color: var(--up-grey-mid);
+  }
+  .footer a { color: var(--up-coral-light); text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 32px; }
+    .section { padding: 32px 16px; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-brand">awesome-design-md</span>
+  <ul class="nav-links">
+    <li><a href="#colors">色彩</a></li>
+    <li><a href="#typography">字体</a></li>
+    <li><a href="#buttons">按钮</a></li>
+    <li><a href="#cards">卡片</a></li>
+    <li><a href="#badges">标签</a></li>
+  </ul>
+  <a class="nav-cta" href="#">了解更多</a>
+</nav>
+
+<section class="hero">
+  <h1>UPerform 优普丰 设计系统</h1>
+  <p>深海蓝为主色、珊瑚橙为 Accent 的专业双色调品牌体系</p>
+  <div class="hero-buttons">
+    <button class="up-btn up-btn-accent">开始学习 →</button>
+    <button class="up-btn up-btn-ghost">联系我们</button>
+  </div>
+</section>
+
+<div class="accent-bar"></div>
+
+<!-- Colors Section -->
+<section class="section" id="colors">
+  <div class="section-label">01 / Colors</div>
+  <h2 class="section-title">色彩系统</h2>
+
+  <div class="color-group-label">品牌主色：深海蓝</div>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#041C32"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Navy Deepest</div>
+        <div class="color-swatch-hex">#041C32</div>
+        <div class="color-swatch-role">最深背景、页脚</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#062B4D"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Navy Dark</div>
+        <div class="color-swatch-hex">#062B4D</div>
+        <div class="color-swatch-role">深色 Header</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#083A67"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Navy Mid</div>
+        <div class="color-swatch-hex">#083A67</div>
+        <div class="color-swatch-role">品牌主色</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#0A477E"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Navy Base</div>
+        <div class="color-swatch-hex">#0A477E</div>
+        <div class="color-swatch-role">按钮、链接</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-group-label">品牌次色：钢蓝</div>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#2E4C6D"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Steel Dark</div>
+        <div class="color-swatch-hex">#2E4C6D</div>
+        <div class="color-swatch-role">次级标题</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#4F82BA"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Steel Light</div>
+        <div class="color-swatch-hex">#4F82BA</div>
+        <div class="color-swatch-role">品牌次色</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-group-label">Accent 色：珊瑚橙</div>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#E78C72"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Coral Base</div>
+        <div class="color-swatch-hex">#E78C72</div>
+        <div class="color-swatch-role">Accent 主色</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#FF9B7D"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Coral Light</div>
+        <div class="color-swatch-hex">#FF9B7D</div>
+        <div class="color-swatch-role">品牌 Accent</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-group-label">温暖中性：米色</div>
+  <div class="color-grid">
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#F1E2C5"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Beige Light</div>
+        <div class="color-swatch-hex">#F1E2C5</div>
+        <div class="color-swatch-role">温暖区块背景</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-block" style="background:#FFF0D1"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">Beige Pale</div>
+        <div class="color-swatch-hex">#FFF0D1</div>
+        <div class="color-swatch-role">浅色提示背景</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Typography Section -->
+<section class="section" id="typography">
+  <div class="section-label">02 / Typography</div>
+  <h2 class="section-title">字体层级</h2>
+
+  <div class="type-sample">
+    <div style="font-size:48px; font-weight:700; color:#FFFFFF;">Display H1 — 封面大标题</div>
+    <div class="type-meta">48–60px / 700 / Navy 或 White</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:32px; font-weight:700; color:#FFFFFF;">Page H2 — 页面主标题</div>
+    <div class="type-meta">32–36px / 700 / #FFFFFF on dark</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:24px; font-weight:600; color:#D9CCB2;">Section H3 — 区块标题</div>
+    <div class="type-meta">24–28px / 600 / #D9CCB2 on dark</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:20px; font-weight:600; color:#FFFFFF;">Sub H4 — 子标题</div>
+    <div class="type-meta">20–22px / 600 / #FFFFFF</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:15px; font-weight:400; color:#D9CCB2;">Body Base — 正文内容示例</div>
+    <div class="type-meta">15–16px / 400 / line-height 1.6 / #D9CCB2</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:13px; color:#A5A5A5;">Caption — 注释、说明文字</div>
+    <div class="type-meta">13–14px / 400 / #A5A5A5</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Buttons Section -->
+<section class="section" id="buttons">
+  <div class="section-label">03 / Buttons</div>
+  <h2 class="section-title">按钮组件</h2>
+
+  <style>
+    .up-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      border: 2px solid transparent;
+      padding: 10px 24px;
+      font-size: 15px;
+      line-height: 1.4;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+    .up-btn-primary { background: #083A67; color: #FFFFFF; border-color: #083A67; }
+    .up-btn-primary:hover { background: #0A477E; border-color: #0A477E; }
+    .up-btn-accent { background: #FF9B7D; color: #FFFFFF; border-color: #FF9B7D; }
+    .up-btn-accent:hover { background: #E78C72; border-color: #E78C72; }
+    .up-btn-secondary { background: transparent; color: #4F82BA; border-color: #4F82BA; }
+    .up-btn-secondary:hover { background: #4F82BA; color: #FFFFFF; }
+    .up-btn-ghost { background: transparent; color: #FFFFFF; border-color: rgba(255,255,255,0.6); }
+    .up-btn-ghost:hover { background: rgba(255,255,255,0.15); border-color: #FFFFFF; }
+  </style>
+
+  <div class="button-row">
+    <div class="button-item">
+      <button class="up-btn up-btn-primary">Primary 按钮</button>
+      <div class="button-label">深海蓝背景</div>
+    </div>
+    <div class="button-item">
+      <button class="up-btn up-btn-accent">Accent / CTA</button>
+      <div class="button-label">珊瑚橙背景</div>
+    </div>
+    <div class="button-item">
+      <button class="up-btn up-btn-secondary">Secondary 描边</button>
+      <div class="button-label">钢蓝边框</div>
+    </div>
+    <div class="button-item">
+      <button class="up-btn up-btn-ghost">Ghost 按钮</button>
+      <div class="button-label">透明背景</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Cards Section -->
+<section class="section" id="cards">
+  <div class="section-label">04 / Cards</div>
+  <h2 class="section-title">卡片组件</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>深色卡片</h3>
+      <p>深海蓝背景、白色文字、8px 圆角</p>
+    </div>
+    <div class="card-dark">
+      <h3>更深卡片</h3>
+      <p>Navy Deepest 背景、次级卡片层级</p>
+    </div>
+    <div class="card-warm">
+      <h3>暖色卡片</h3>
+      <p>米色背景、珊瑚橙左边框、用于亮点提示</p>
+    </div>
+    <div class="card-info">
+      <h3>信息卡片</h3>
+      <p>半透明钢蓝背景、钢蓝左边框、用于说明</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Badges Section -->
+<section class="section" id="badges">
+  <div class="section-label">05 / Badges</div>
+  <h2 class="section-title">标签 / Badge</h2>
+
+  <div class="badge-row">
+    <span class="badge badge-primary">主要标签</span>
+    <span class="badge badge-accent">Accent 标签</span>
+    <span class="badge badge-sky">天蓝标签</span>
+    <span class="badge badge-warm">暖色标签</span>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Spacing Section -->
+<section class="section">
+  <div class="section-label">06 / Spacing</div>
+  <h2 class="section-title">间距系统</h2>
+
+  <div class="spacing-row">
+    <div class="spacing-item"><div class="spacing-block" style="width:4px; height:24px;"></div><div class="spacing-value">4px</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:8px; height:24px;"></div><div class="spacing-value">8px</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:16px; height:24px;"></div><div class="spacing-value">16px</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:24px; height:24px;"></div><div class="spacing-value">24px</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:32px; height:24px;"></div><div class="spacing-value">32px</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:48px; height:24px;"></div><div class="spacing-value">48px</div></div>
+  </div>
+
+  <p style="font-size: 13px; color: #A5A5A5;">4 | 8 | 12 | 16 | 24 | 32 | 48 | 64 | 80 | 96</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- Radius Section -->
+<section class="section">
+  <div class="section-label">07 / Radius</div>
+  <h2 class="section-title">圆角系统</h2>
+
+  <div class="radius-row">
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:4px;"></div>
+      <div class="radius-label">4px</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:6px;"></div>
+      <div class="radius-label">6px (按钮)</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:8px;"></div>
+      <div class="radius-label">8px (卡片)</div>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:20px;"></div>
+      <div class="radius-label">20px (标签)</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Elevation Section -->
+<section class="section">
+  <div class="section-label">08 / Elevation</div>
+  <h2 class="section-title">深度层级</h2>
+
+  <div class="elevation-grid">
+    <div class="elevation-card">
+      <div class="elevation-label">Base</div>
+      <div class="elevation-desc">Navy Deepest 背景</div>
+    </div>
+    <div class="elevation-card">
+      <div class="elevation-label">Card Surface</div>
+      <div class="elevation-desc">Navy (#083A67)</div>
+    </div>
+    <div class="elevation-card elevation-card--shadow">
+      <div class="elevation-label">Elevated</div>
+      <div class="elevation-desc">0 4px 16px rgba(0,0,0,0.3)</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Forms Section -->
+<section class="section">
+  <div class="section-label">09 / Forms</div>
+  <h2 class="section-title">表单元素</h2>
+
+  <div class="form-group">
+    <label class="form-label">输入框（默认）</label>
+    <input class="form-input" type="text" placeholder="请输入内容...">
+  </div>
+  <div class="form-group">
+    <label class="form-label">输入框（聚焦）</label>
+    <input class="form-input" type="text" value="聚焦状态" style="border-color:#FF9B7D;">
+  </div>
+  <div class="form-group">
+    <label class="form-label">输入框（错误）</label>
+    <input class="form-input form-input--error" type="text" value="错误输入">
+  </div>
+</section>
+
+<footer class="footer">
+  UPerform 设计系统 — 由 <a href="https://github.com/VoltAgent/voltagent" target="_blank" rel="noopener noreferrer">VoltAgent</a> 团队维护
+</footer>
+
+</body>
+</html>
