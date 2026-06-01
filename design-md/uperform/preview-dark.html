@@ -9,44 +9,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Primary: Navy */
-    --up-navy-deepest: #041C32;
-    --up-navy-dark: #062B4D;
-    --up-navy: #083A67;
-    --up-navy-base: #0A477E;
-    /* Secondary: Steel Blue */
-    --up-steel-dark: #2E4C6D;
-    --up-steel-mid: #395E87;
-    --up-steel: #4471A2;
-    --up-steel-light: #4F82BA;
-    /* Accent: Coral */
-    --up-coral-dark: #C67861;
-    --up-coral-mid: #CB7B64;
-    --up-coral: #E78C72;
-    --up-coral-light: #FF9B7D;
-    /* Warm Neutral: Beige */
-    --up-beige-dark: #C8BCA4;
-    --up-beige-mid: #D9CCB2;
-    --up-beige-light: #F1E2C5;
-    --up-beige-pale: #FFF0D1;
-    /* Cool Neutral: Grey */
-    --up-grey-dark: #848484;
-    --up-grey-mid: #A5A5A5;
-    --up-grey: #BBBBBB;
-    --up-grey-light: #D2D2D2;
-    --up-grey-pale: #DDDDDD;
-    --up-white: #FFFFFF;
-    /* Dark Text */
-    --up-near-black: #283030;
-    --up-dark-grey: #535353;
-    --up-text-muted: #A7A7A7;
+    /* ========== PRIMARY (品牌主色) - 蓝色系 ========== */
+    --up-deep-sea:      #0A2540;
+    --up-ocean:         #1E4976;   /* Brand Primary - 60-70% */
+    --up-sky:           #2E6BA8;
+    --up-horizon:       #4A8FD8;
+    --up-glacier:       #E8F2FC;
+    /* ========== NEUTRALS (中性色) - 灰色系 ========== */
+    --up-carbon:        #1A1A1A;
+    --up-slate:         #3D4852;
+    --up-steel-text:    #6B7785;
+    --up-silver:        #A8B2BD;
+    --up-mist:          #F5F7FA;
+    --up-white:         #FFFFFF;
+    /* ========== SECONDARY (辅助色) - 金色系 ========== */
+    --up-prestige:      #D4AF37;   /* Brand Secondary - 高级感 */
+    --up-prestige-hi:   #E8C547;
+    --up-prestige-lo:   #B8941F;
+    --up-prestige-edge: #9A7B1A;
+    --up-champagne:     #F2D492;
+    --up-champagne-hi:  #FFF4D6;
+    --up-champagne-lo:  #D9BC6E;
+    /* ========== ACCENT (点缀色) - 橙色系 ========== */
+    --up-vibrant:       #FF6B35;   /* Brand Accent - 行动信号 */
+    --up-vibrant-dark:  #E55A2B;
+    --up-coral:         #FF9B7D;
 
     --font: 'Noto Sans SC', 'Source Sans Pro', 'Microsoft YaHei', sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--up-navy-deepest);
+    background: var(--up-deep-sea);
     color: var(--up-white);
     font-family: var(--font);
     font-size: 15px;
@@ -63,7 +57,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 32px;
-    background: rgba(4, 28, 50, 0.95);
+    background: rgba(10, 37, 64, 0.95);
     backdrop-filter: saturate(180%) blur(20px);
     color: var(--up-white);
     border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -82,14 +76,14 @@
   .nav-links a {
     font-size: 14px;
     font-weight: 400;
-    color: var(--up-beige-mid);
+    color: var(--up-silver);
     text-decoration: none;
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--up-white); }
   .nav-cta {
     display: inline-block;
-    background: var(--up-coral-light);
+    background: var(--up-vibrant);
     color: var(--up-white);
     padding: 8px 20px;
     border-radius: 6px;
@@ -102,7 +96,7 @@
   .hero {
     padding: 80px 32px;
     text-align: center;
-    background: linear-gradient(135deg, var(--up-navy-deepest) 0%, var(--up-navy) 60%, var(--up-navy-base) 100%);
+    background: linear-gradient(135deg, var(--up-deep-sea) 0%, var(--up-ocean) 60%, var(--up-sky) 100%);
     color: var(--up-white);
   }
   .hero h1 {
@@ -112,13 +106,26 @@
   }
   .hero p {
     font-size: 18px;
-    color: var(--up-beige-mid);
-    max-width: 600px;
-    margin: 0 auto 32px;
+    color: var(--up-glacier);
+    max-width: 700px;
+    margin: 0 auto 16px;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--up-prestige-hi) 0%, var(--up-prestige) 50%, var(--up-prestige-lo) 100%);
+    color: var(--up-white);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    border: 1px solid var(--up-prestige-edge);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
   }
   .accent-bar {
     height: 4px;
-    background: linear-gradient(90deg, var(--up-coral-light), var(--up-coral));
+    background: linear-gradient(90deg, var(--up-vibrant), var(--up-coral));
     margin-bottom: 48px;
   }
 
@@ -128,22 +135,28 @@
   /* Section */
   .section {
     padding: 48px 32px;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
   }
   .section-label {
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: var(--up-coral-light);
+    color: var(--up-vibrant);
     margin-bottom: 8px;
   }
   .section-title {
     font-size: 28px;
     font-weight: 700;
     color: var(--up-white);
+    margin-bottom: 12px;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: var(--up-silver);
     margin-bottom: 32px;
+    max-width: 700px;
   }
   .section-divider {
     border: none;
@@ -151,42 +164,64 @@
     margin: 0;
   }
 
-  /* Color Grid */
+  /* 4-Layer Color Grid */
+  .color-layer {
+    margin-bottom: 32px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .color-layer-primary   { background: rgba(46, 107, 168, 0.08); border-left: 6px solid var(--up-ocean); }
+  .color-layer-neutral   { background: rgba(255, 255, 255, 0.03); border-left: 6px solid var(--up-slate); }
+  .color-layer-secondary { background: rgba(212, 175, 55, 0.06); border-left: 6px solid var(--up-prestige); }
+  .color-layer-accent    { background: rgba(255, 107, 53, 0.08); border-left: 6px solid var(--up-vibrant); }
+  .color-layer-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .color-layer-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--up-white);
+  }
+  .color-layer-role {
+    font-size: 12px;
+    color: var(--up-silver);
+  }
+  .color-layer-percent {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--up-steel-text);
+    font-family: monospace;
+  }
   .color-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 12px;
-    margin-bottom: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
   }
   .color-swatch {
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
   }
-  .color-swatch-block { height: 60px; width: 100%; }
-  .color-swatch-info { padding: 10px 12px; background: rgba(255,255,255,0.05); }
-  .color-swatch-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; color: var(--up-white); }
-  .color-swatch-hex { font-size: 11px; color: var(--up-beige-mid); font-family: monospace; }
-  .color-swatch-role { font-size: 10px; color: var(--up-grey-mid); margin-top: 2px; }
-  .color-group-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--up-coral-light);
-    margin: 28px 0 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+  .color-swatch-block { height: 56px; width: 100%; }
+  .color-swatch-info { padding: 8px 10px; background: rgba(0,0,0,0.2); }
+  .color-swatch-name { font-size: 11px; font-weight: 600; margin-bottom: 1px; color: var(--up-white); }
+  .color-swatch-hex { font-size: 10px; color: var(--up-silver); font-family: monospace; }
+  .color-swatch-role { font-size: 9px; color: var(--up-steel-text); margin-top: 2px; }
 
   /* Typography Sample */
   .type-sample {
-    margin-bottom: 24px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .type-sample:last-child { border-bottom: none; }
   .type-meta {
     font-size: 11px;
-    color: var(--up-grey-mid);
+    color: var(--up-steel-text);
     margin-top: 6px;
     font-family: monospace;
   }
@@ -202,7 +237,7 @@
   .button-item { text-align: center; }
   .button-label {
     font-size: 10px;
-    color: var(--up-grey-mid);
+    color: var(--up-steel-text);
     margin-top: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -216,34 +251,42 @@
     margin-bottom: 32px;
   }
   .card {
-    background: var(--up-navy);
+    background: var(--up-ocean);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 8px;
     padding: 24px;
   }
-  .card-dark {
-    background: var(--up-navy-deepest);
+  .card-primary {
+    background: var(--up-deep-sea);
     color: var(--up-white);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 8px;
     padding: 24px;
   }
-  .card-warm {
-    background: var(--up-beige-pale);
-    border-left: 4px solid var(--up-coral-light);
+  .card-gold {
+    background: linear-gradient(135deg, var(--up-champagne-hi) 0%, var(--up-champagne) 100%);
+    border-left: 4px solid var(--up-prestige);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    box-shadow: inset 0 0 0 1px rgba(255,248,220,0.4);
+  }
+  .card-info {
+    background: rgba(74, 143, 216, 0.15);
+    border-left: 4px solid var(--up-horizon);
     border-radius: 0 8px 8px 0;
     padding: 16px 20px;
   }
-  .card-info {
-    background: rgba(79, 130, 186, 0.15);
-    border-left: 4px solid var(--up-steel-light);
+  .card-warm {
+    background: rgba(255, 107, 53, 0.12);
+    border-left: 4px solid var(--up-vibrant);
     border-radius: 0 8px 8px 0;
     padding: 16px 20px;
   }
   .card h3 { font-size: 16px; font-weight: 600; color: var(--up-white); margin-bottom: 8px; }
-  .card p { font-size: 13px; color: var(--up-beige-mid); }
-  .card-warm h3 { color: var(--up-navy); }
-  .card-warm p { color: var(--up-dark-grey); }
+  .card p { font-size: 13px; color: var(--up-silver); }
+  .card-gold h3 { color: var(--up-deep-sea); }
+  .card-gold p { color: var(--up-slate); }
+  .card-warm h3 { color: var(--up-vibrant); }
 
   /* Badge */
   .badge-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px; }
@@ -255,16 +298,24 @@
     font-weight: 600;
     letter-spacing: 0.5px;
   }
-  .badge-primary { background: var(--up-navy); color: var(--up-white); }
-  .badge-accent { background: var(--up-coral-light); color: var(--up-white); }
-  .badge-sky { background: #519FFD; color: var(--up-white); }
-  .badge-warm { background: var(--up-beige-pale); color: var(--up-coral-dark); border: 1px solid var(--up-coral-light); }
+  .badge-primary { background: var(--up-ocean); color: var(--up-white); }
+  .badge-accent { background: var(--up-vibrant); color: var(--up-white); }
+  .badge-coral { background: var(--up-coral); color: var(--up-white); }
+  .badge-sky { background: var(--up-horizon); color: var(--up-white); }
+  .badge-gold {
+    background: linear-gradient(135deg, var(--up-prestige-hi) 0%, var(--up-prestige) 50%, var(--up-prestige-lo) 100%);
+    color: var(--up-white);
+    border: 1px solid var(--up-prestige-edge);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  .badge-warm { background: var(--up-champagne); color: var(--up-deep-sea); }
+  .badge-neutral { background: rgba(255,255,255,0.05); color: var(--up-silver); border: 1px solid rgba(255,255,255,0.15); }
 
   /* Spacing Row */
   .spacing-row { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
   .spacing-item { text-align: center; }
-  .spacing-block { background: var(--up-coral-light); border-radius: 4px; margin-bottom: 6px; }
-  .spacing-value { font-size: 10px; color: var(--up-grey-mid); font-family: monospace; }
+  .spacing-block { background: var(--up-vibrant); border-radius: 4px; margin-bottom: 6px; }
+  .spacing-value { font-size: 10px; color: var(--up-steel-text); font-family: monospace; }
 
   /* Radius Row */
   .radius-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 32px; }
@@ -272,16 +323,16 @@
   .radius-box {
     width: 56px;
     height: 56px;
-    background: var(--up-steel);
+    background: var(--up-sky);
     border: 1px solid rgba(255,255,255,0.15);
     margin-bottom: 6px;
   }
-  .radius-label { font-size: 10px; color: var(--up-grey-mid); font-family: monospace; }
+  .radius-label { font-size: 10px; color: var(--up-steel-text); font-family: monospace; }
 
   /* Elevation */
   .elevation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
   .elevation-card {
-    background: var(--up-navy);
+    background: var(--up-ocean);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 8px;
     padding: 20px;
@@ -291,14 +342,14 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   }
   .elevation-label { font-size: 14px; font-weight: 600; color: var(--up-white); margin-bottom: 4px; }
-  .elevation-desc { font-size: 11px; color: var(--up-grey-mid); font-family: monospace; }
+  .elevation-desc { font-size: 11px; color: var(--up-steel-text); font-family: monospace; }
 
   /* Form */
   .form-group { margin-bottom: 20px; max-width: 400px; }
-  .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--up-beige-mid); margin-bottom: 6px; }
+  .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--up-silver); margin-bottom: 6px; }
   .form-input {
     width: 100%;
-    background: var(--up-navy);
+    background: var(--up-ocean);
     color: var(--up-white);
     border: 1px solid rgba(255,255,255,0.15);
     padding: 12px 16px;
@@ -308,9 +359,70 @@
     outline: none;
     transition: border-color 0.2s;
   }
-  .form-input:focus { border-color: var(--up-coral-light); }
+  .form-input:focus { border-color: var(--up-vibrant); }
   .form-input--error { border-color: var(--up-coral); }
-  .form-input::placeholder { color: var(--up-grey-mid); }
+  .form-input::placeholder { color: var(--up-steel-text); }
+
+  /* 3 Rules Box */
+  .rules-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .rules-box h3 { color: var(--up-white); font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .rules-list { list-style: none; padding: 0; }
+  .rules-list li {
+    padding: 8px 0;
+    font-size: 13px;
+    color: var(--up-silver);
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+  }
+  .rules-list li:last-child { border-bottom: none; }
+  .rules-num {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: var(--up-vibrant);
+    color: var(--up-white);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 10px;
+  }
+
+  /* Page-Type Allocation Table */
+  .page-type-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+  .page-type-table th,
+  .page-type-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .page-type-table th {
+    background: rgba(255,255,255,0.05);
+    font-weight: 600;
+    color: var(--up-horizon);
+  }
+  .page-type-table td {
+    color: var(--up-silver);
+  }
+  .page-type-table code {
+    font-family: monospace;
+    color: var(--up-glacier);
+    background: rgba(255,255,255,0.05);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
 
   /* Footer */
   .footer {
@@ -318,9 +430,9 @@
     text-align: center;
     border-top: 1px solid rgba(255,255,255,0.06);
     font-size: 13px;
-    color: var(--up-grey-mid);
+    color: var(--up-steel-text);
   }
-  .footer a { color: var(--up-coral-light); text-decoration: underline; }
+  .footer a { color: var(--up-vibrant); text-decoration: underline; }
 
   @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -335,123 +447,185 @@
 <nav class="nav">
   <span class="nav-brand">awesome-design-md</span>
   <ul class="nav-links">
-    <li><a href="#colors">色彩</a></li>
-    <li><a href="#typography">字体</a></li>
-    <li><a href="#buttons">按钮</a></li>
-    <li><a href="#cards">卡片</a></li>
-    <li><a href="#badges">标签</a></li>
+    <li><a href="#colors">4 层色彩</a></li>
+    <li><a href="#rules">3 条铁律</a></li>
+    <li><a href="#page-type">页面类型</a></li>
+    <li><a href="#components">组件</a></li>
   </ul>
   <a class="nav-cta" href="#">了解更多</a>
 </nav>
 
 <section class="hero">
+  <span class="hero-tag">PRIMARY · NEUTRALS · SECONDARY · ACCENT</span>
   <h1>UPerform 优普丰 设计系统</h1>
-  <p>深海蓝为主色、珊瑚橙为 Accent 的专业双色调品牌体系</p>
+  <p>国际标准 4 层色彩体系:主色管品牌、灰色管功能、金色管气质、橙色管行动</p>
   <div class="hero-buttons">
     <button class="up-btn up-btn-accent">开始学习 →</button>
+    <button class="up-btn up-btn-secondary">Premium 课程</button>
     <button class="up-btn up-btn-ghost">联系我们</button>
   </div>
 </section>
 
 <div class="accent-bar"></div>
 
-<!-- Colors Section -->
+<!-- 4-Layer Colors Section -->
 <section class="section" id="colors">
-  <div class="section-label">01 / Colors</div>
-  <h2 class="section-title">色彩系统</h2>
+  <div class="section-label">01 / 4-Layer Color System</div>
+  <h2 class="section-title">4 层色彩体系</h2>
+  <p class="section-desc">按国际设计标准,严格区分品牌色、中性色、辅助色、点缀色,各司其职——主色管品牌识别、灰色管功能支撑、金色管高级感、橙色管行动信号。</p>
 
-  <div class="color-group-label">品牌主色：深海蓝</div>
-  <div class="color-grid">
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#041C32"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Navy Deepest</div>
-        <div class="color-swatch-hex">#041C32</div>
-        <div class="color-swatch-role">最深背景、页脚</div>
-      </div>
+  <!-- PRIMARY -->
+  <div class="color-layer color-layer-primary">
+    <div class="color-layer-header">
+      <span class="color-layer-name">🎨 PRIMARY 主色系 — 蓝色</span>
+      <span class="color-layer-role">品牌识别 · 60-70% 视觉量</span>
+      <span class="color-layer-percent">5 COLORS</span>
     </div>
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#062B4D"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Navy Dark</div>
-        <div class="color-swatch-hex">#062B4D</div>
-        <div class="color-swatch-role">深色 Header</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#0A2540"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Deep Sea 深海蓝</div>
+          <div class="color-swatch-hex">#0A2540</div>
+          <div class="color-swatch-role">深色背景</div>
+        </div>
       </div>
-    </div>
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#083A67"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Navy Mid</div>
-        <div class="color-swatch-hex">#083A67</div>
-        <div class="color-swatch-role">品牌主色</div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#1E4976"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Ocean 海洋蓝 ⭐</div>
+          <div class="color-swatch-hex">#1E4976</div>
+          <div class="color-swatch-role">品牌主色</div>
+        </div>
       </div>
-    </div>
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#0A477E"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Navy Base</div>
-        <div class="color-swatch-hex">#0A477E</div>
-        <div class="color-swatch-role">按钮、链接</div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#2E6BA8"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Sky 天空蓝</div>
+          <div class="color-swatch-hex">#2E6BA8</div>
+          <div class="color-swatch-role">辅助蓝</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#4A8FD8"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Horizon 地平蓝</div>
+          <div class="color-swatch-hex">#4A8FD8</div>
+          <div class="color-swatch-role">点缀蓝</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#E8F2FC"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Glacier 冰川蓝</div>
+          <div class="color-swatch-hex">#E8F2FC</div>
+          <div class="color-swatch-role">浅蓝底</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="color-group-label">品牌次色：钢蓝</div>
-  <div class="color-grid">
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#2E4C6D"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Steel Dark</div>
-        <div class="color-swatch-hex">#2E4C6D</div>
-        <div class="color-swatch-role">次级标题</div>
-      </div>
+  <!-- NEUTRALS -->
+  <div class="color-layer color-layer-neutral">
+    <div class="color-layer-header">
+      <span class="color-layer-name">⚪ NEUTRALS 中性色 — 灰色 (工具集)</span>
+      <span class="color-layer-role">功能支撑 · 文字/边/底</span>
+      <span class="color-layer-percent">5 COLORS</span>
     </div>
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#4F82BA"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Steel Light</div>
-        <div class="color-swatch-hex">#4F82BA</div>
-        <div class="color-swatch-role">品牌次色</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#1A1A1A"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Carbon 碳黑</div>
+          <div class="color-swatch-hex">#1A1A1A</div>
+          <div class="color-swatch-role">极深文本</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#3D4852"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Slate 石板灰</div>
+          <div class="color-swatch-hex">#3D4852</div>
+          <div class="color-swatch-role">强文本</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#6B7785"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Steel 钢铁灰</div>
+          <div class="color-swatch-hex">#6B7785</div>
+          <div class="color-swatch-role">正文</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#A8B2BD"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Silver 银灰</div>
+          <div class="color-swatch-hex">#A8B2BD</div>
+          <div class="color-swatch-role">边框</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#F5F7FA"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Mist 雾白</div>
+          <div class="color-swatch-hex">#F5F7FA</div>
+          <div class="color-swatch-role">浅色背景</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="color-group-label">Accent 色：珊瑚橙</div>
-  <div class="color-grid">
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#E78C72"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Coral Base</div>
-        <div class="color-swatch-hex">#E78C72</div>
-        <div class="color-swatch-role">Accent 主色</div>
-      </div>
+  <!-- SECONDARY -->
+  <div class="color-layer color-layer-secondary">
+    <div class="color-layer-header">
+      <span class="color-layer-name">👑 SECONDARY 辅助色 — 金色 (高级感)</span>
+      <span class="color-layer-role">装饰点缀 · 全场 ≤ 3 处</span>
+      <span class="color-layer-percent">2 COLORS</span>
     </div>
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#FF9B7D"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Coral Light</div>
-        <div class="color-swatch-hex">#FF9B7D</div>
-        <div class="color-swatch-role">品牌 Accent</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:linear-gradient(135deg, #E8C547 0%, #D4AF37 50%, #B8941F 100%);"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Prestige 尊贵金</div>
+          <div class="color-swatch-hex">#D4AF37</div>
+          <div class="color-swatch-role">金重点 · VIP/奖项</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:linear-gradient(135deg, #FFF4D6 0%, #F2D492 50%, #D9BC6E 100%);"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Champagne 香槟金</div>
+          <div class="color-swatch-hex">#F2D492</div>
+          <div class="color-swatch-role">金柔光</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="color-group-label">温暖中性：米色</div>
-  <div class="color-grid">
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#F1E2C5"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Beige Light</div>
-        <div class="color-swatch-hex">#F1E2C5</div>
-        <div class="color-swatch-role">温暖区块背景</div>
-      </div>
+  <!-- ACCENT -->
+  <div class="color-layer color-layer-accent">
+    <div class="color-layer-header">
+      <span class="color-layer-name">🚀 ACCENT 点缀色 — 橙色 (行动信号)</span>
+      <span class="color-layer-role">CTA 按钮 · 全场 ≤ 3 处</span>
+      <span class="color-layer-percent">2 COLORS</span>
     </div>
-    <div class="color-swatch">
-      <div class="color-swatch-block" style="background:#FFF0D1"></div>
-      <div class="color-swatch-info">
-        <div class="color-swatch-name">Beige Pale</div>
-        <div class="color-swatch-hex">#FFF0D1</div>
-        <div class="color-swatch-role">浅色提示背景</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#FF6B35"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Vibrant 活力橙</div>
+          <div class="color-swatch-hex">#FF6B35</div>
+          <div class="color-swatch-role">CTA 主按钮</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#FF9B7D"></div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">Coral 珊瑚光</div>
+          <div class="color-swatch-hex">#FF9B7D</div>
+          <div class="color-swatch-role">次 CTA / 暖标签</div>
+        </div>
       </div>
     </div>
   </div>
@@ -459,43 +633,78 @@
 
 <hr class="section-divider">
 
-<!-- Typography Section -->
-<section class="section" id="typography">
-  <div class="section-label">02 / Typography</div>
-  <h2 class="section-title">字体层级</h2>
+<!-- 3 Rules Section -->
+<section class="section" id="rules">
+  <div class="section-label">02 / Three Critical Rules</div>
+  <h2 class="section-title">3 条使用铁律</h2>
+  <p class="section-desc">这 3 条铁律是整个色彩体系的灵魂——保证主色不被稀释、CTA 不被淹没、金色不流于廉价。</p>
 
-  <div class="type-sample">
-    <div style="font-size:48px; font-weight:700; color:#FFFFFF;">Display H1 — 封面大标题</div>
-    <div class="type-meta">48–60px / 700 / Navy 或 White</div>
-  </div>
-  <div class="type-sample">
-    <div style="font-size:32px; font-weight:700; color:#FFFFFF;">Page H2 — 页面主标题</div>
-    <div class="type-meta">32–36px / 700 / #FFFFFF on dark</div>
-  </div>
-  <div class="type-sample">
-    <div style="font-size:24px; font-weight:600; color:#D9CCB2;">Section H3 — 区块标题</div>
-    <div class="type-meta">24–28px / 600 / #D9CCB2 on dark</div>
-  </div>
-  <div class="type-sample">
-    <div style="font-size:20px; font-weight:600; color:#FFFFFF;">Sub H4 — 子标题</div>
-    <div class="type-meta">20–22px / 600 / #FFFFFF</div>
-  </div>
-  <div class="type-sample">
-    <div style="font-size:15px; font-weight:400; color:#D9CCB2;">Body Base — 正文内容示例</div>
-    <div class="type-meta">15–16px / 400 / line-height 1.6 / #D9CCB2</div>
-  </div>
-  <div class="type-sample">
-    <div style="font-size:13px; color:#A5A5A5;">Caption — 注释、说明文字</div>
-    <div class="type-meta">13–14px / 400 / #A5A5A5</div>
+  <div class="rules-box">
+    <ul class="rules-list">
+      <li><span class="rules-num">1</span><strong>橙色是"放大镜",不是"油漆"</strong> — 整场不超过 3 处橙色元素(按钮 + 1-2 个关键数据),多了就失去强调意义。</li>
+      <li><span class="rules-num">2</span><strong>金色永远搭配深色</strong> — 尊贵金 + 深海蓝 = 经典奢华;香槟金 + 雾白 = 轻柔优雅。<span style="color:var(--up-vibrant); font-weight:600;">金色不要放在冰川蓝上(会糊)</span>。</li>
+      <li><span class="rules-num">3</span><strong>文字层级用灰色系统,蓝/橙/金不参与正文</strong> — 正文只走 <code style="background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:3px;">#1A1A1A → #3D4852 → #6B7785</code> 的灰阶。蓝是装饰色,不是文字色。</li>
+    </ul>
   </div>
 </section>
 
 <hr class="section-divider">
 
-<!-- Buttons Section -->
-<section class="section" id="buttons">
-  <div class="section-label">03 / Buttons</div>
-  <h2 class="section-title">按钮组件</h2>
+<!-- Page-Type Allocation -->
+<section class="section" id="page-type">
+  <div class="section-label">03 / Page Type Allocation</div>
+  <h2 class="section-title">按页面类型分配 (三明治结构)</h2>
+  <p class="section-desc">不同页面类型有不同的色彩主导——封面/章节/结尾用深海蓝主导,内容页用海洋蓝主导,数据/成果页让碳黑与金色数字承担视觉。</p>
+
+  <table class="page-type-table">
+    <thead>
+      <tr>
+        <th>页面类型</th>
+        <th>背景 (PRIMARY)</th>
+        <th>标题色 (PRIMARY)</th>
+        <th>正文色 (NEUTRALS)</th>
+        <th>可用点缀 (SECONDARY + ACCENT)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>封面/章节页</strong></td>
+        <td><code>#0A2540</code> 深海蓝</td>
+        <td><code>#F5F7FA</code> 雾白</td>
+        <td><code>#E8F2FC</code> 冰川蓝</td>
+        <td>👑 尊贵金(品牌标识) + 海洋蓝(辅助文字)</td>
+      </tr>
+      <tr>
+        <td><strong>内容页</strong></td>
+        <td><code>#F5F7FA</code> 雾白 / <code>#E8F2FC</code> 冰川蓝</td>
+        <td><code>#1E4976</code> 海洋蓝</td>
+        <td><code>#6B7785</code> 钢铁灰</td>
+        <td>🚀 活力橙(强调) + 天空蓝(图表)</td>
+      </tr>
+      <tr>
+        <td><strong>数据/成果页</strong></td>
+        <td><code>#F5F7FA</code> 雾白</td>
+        <td><code>#1A1A1A</code> 碳黑</td>
+        <td><code>#3D4852</code> 石板灰</td>
+        <td>👑 尊贵金(关键大数字) + 🚀 活力橙(增长率)</td>
+      </tr>
+      <tr>
+        <td><strong>结尾/CTA 页</strong></td>
+        <td><code>#0A2540</code> 深海蓝</td>
+        <td><code>#F5F7FA</code> 雾白</td>
+        <td><code>#E8F2FC</code> 冰川蓝</td>
+        <td>🚀 活力橙(按钮) + 👑 尊贵金(品牌收尾)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="section-divider">
+
+<!-- Components Section -->
+<section class="section" id="components">
+  <div class="section-label">04 / Components</div>
+  <h2 class="section-title">组件示例</h2>
 
   <style>
     .up-btn {
@@ -512,85 +721,125 @@
       transition: all 0.2s ease;
       letter-spacing: 0.3px;
     }
-    .up-btn-primary { background: #083A67; color: #FFFFFF; border-color: #083A67; }
-    .up-btn-primary:hover { background: #0A477E; border-color: #0A477E; }
-    .up-btn-accent { background: #FF9B7D; color: #FFFFFF; border-color: #FF9B7D; }
-    .up-btn-accent:hover { background: #E78C72; border-color: #E78C72; }
-    .up-btn-secondary { background: transparent; color: #4F82BA; border-color: #4F82BA; }
-    .up-btn-secondary:hover { background: #4F82BA; color: #FFFFFF; }
+    /* PRIMARY 主色按钮 - 海洋蓝 */
+    .up-btn-primary { background: #1E4976; color: #FFFFFF; border-color: #1E4976; }
+    .up-btn-primary:hover { background: #2E6BA8; border-color: #2E6BA8; }
+    /* ACCENT CTA 按钮 - 活力橙 */
+    .up-btn-accent { background: #FF6B35; color: #FFFFFF; border-color: #FF6B35; }
+    .up-btn-accent:hover { background: #E55A2B; border-color: #E55A2B; }
+    /* SECONDARY 高级按钮 - 尊贵金渐变 */
+    .up-btn-secondary {
+      background: linear-gradient(135deg, #E8C547 0%, #D4AF37 50%, #B8941F 100%);
+      color: #FFFFFF;
+      border: 1px solid #9A7B1A;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+    .up-btn-secondary:hover { background: linear-gradient(135deg, #D4AF37 0%, #B8941F 50%, #9A7B1A 100%); }
+    /* Ghost 按钮 */
     .up-btn-ghost { background: transparent; color: #FFFFFF; border-color: rgba(255,255,255,0.6); }
     .up-btn-ghost:hover { background: rgba(255,255,255,0.15); border-color: #FFFFFF; }
   </style>
 
   <div class="button-row">
     <div class="button-item">
-      <button class="up-btn up-btn-primary">Primary 按钮</button>
-      <div class="button-label">深海蓝背景</div>
+      <button class="up-btn up-btn-primary">PRIMARY</button>
+      <div class="button-label">海洋蓝 (主色)</div>
     </div>
     <div class="button-item">
-      <button class="up-btn up-btn-accent">Accent / CTA</button>
-      <div class="button-label">珊瑚橙背景</div>
+      <button class="up-btn up-btn-accent">ACCENT CTA</button>
+      <div class="button-label">活力橙 (行动)</div>
     </div>
     <div class="button-item">
-      <button class="up-btn up-btn-secondary">Secondary 描边</button>
-      <div class="button-label">钢蓝边框</div>
+      <button class="up-btn up-btn-secondary">👑 SECONDARY</button>
+      <div class="button-label">尊贵金 (高级)</div>
     </div>
     <div class="button-item">
-      <button class="up-btn up-btn-ghost">Ghost 按钮</button>
-      <div class="button-label">透明背景</div>
+      <button class="up-btn up-btn-ghost">Ghost</button>
+      <div class="button-label">深底透明</div>
     </div>
   </div>
 </section>
 
 <hr class="section-divider">
 
-<!-- Cards Section -->
-<section class="section" id="cards">
-  <div class="section-label">04 / Cards</div>
-  <h2 class="section-title">卡片组件</h2>
+<section class="section">
+  <div class="section-label">05 / Cards & Badges</div>
+  <h2 class="section-title">卡片 & 标签</h2>
 
   <div class="card-grid">
     <div class="card">
-      <h3>深色卡片</h3>
-      <p>深海蓝背景、白色文字、8px 圆角</p>
+      <h3>主色卡片</h3>
+      <p>海洋蓝背景、白色文字、8px 圆角、用于标准内容块</p>
     </div>
-    <div class="card-dark">
-      <h3>更深卡片</h3>
-      <p>Navy Deepest 背景、次级卡片层级</p>
+    <div class="card-primary">
+      <h3>深海蓝主色卡片</h3>
+      <p>Deep Sea 背景、最深卡片层级、用于强调</p>
     </div>
-    <div class="card-warm">
-      <h3>暖色卡片</h3>
-      <p>米色背景、珊瑚橙左边框、用于亮点提示</p>
+    <div class="card-gold">
+      <h3>👑 金色暖卡片</h3>
+      <p>香槟金渐变背景、尊贵金左边框、用于高级引用</p>
     </div>
     <div class="card-info">
-      <h3>信息卡片</h3>
-      <p>半透明钢蓝背景、钢蓝左边框、用于说明</p>
+      <h3>冰川蓝信息卡片</h3>
+      <p>半透明地平蓝背景、地平蓝左边框、用于说明</p>
+    </div>
+    <div class="card-warm">
+      <h3>🚀 活力橙暖卡片</h3>
+      <p>半透明活力橙背景、活力橙左边框、用于重点 CTA</p>
     </div>
   </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- Badges Section -->
-<section class="section" id="badges">
-  <div class="section-label">05 / Badges</div>
-  <h2 class="section-title">标签 / Badge</h2>
 
   <div class="badge-row">
-    <span class="badge badge-primary">主要标签</span>
-    <span class="badge badge-accent">Accent 标签</span>
-    <span class="badge badge-sky">天蓝标签</span>
-    <span class="badge badge-warm">暖色标签</span>
+    <span class="badge badge-primary">PRIMARY</span>
+    <span class="badge badge-accent">ACCENT</span>
+    <span class="badge badge-coral">CORAL</span>
+    <span class="badge badge-sky">SKY</span>
+    <span class="badge badge-gold">👑 SECONDARY</span>
+    <span class="badge badge-warm">CHAMPAGNE</span>
+    <span class="badge badge-neutral">NEUTRAL</span>
   </div>
 </section>
 
 <hr class="section-divider">
 
-<!-- Spacing Section -->
 <section class="section">
-  <div class="section-label">06 / Spacing</div>
-  <h2 class="section-title">间距系统</h2>
+  <div class="section-label">06 / Typography (灰阶文字)</div>
+  <h2 class="section-title">字体层级 — 文字只用灰阶</h2>
+  <p class="section-desc">遵循铁律 #3:正文只走灰阶。蓝/橙/金不参与正文。</p>
 
+  <div class="type-sample">
+    <div style="font-size:48px; font-weight:700; color:#FFFFFF;">Display H1 — 封面大标题用白</div>
+    <div class="type-meta">48–60px / 700 / #FFFFFF (on dark)</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:32px; font-weight:700; color:#FFFFFF;">Page H2 — 页面主标题</div>
+    <div class="type-meta">32–36px / 700 / #FFFFFF (on dark)</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:24px; font-weight:600; color:#4A8FD8;">Section H3 — 区块标题用 Horizon Blue</div>
+    <div class="type-meta">24–28px / 600 / #4A8FD8 (on dark)</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:20px; font-weight:600; color:#FFFFFF;">Sub H4 — 子标题用白</div>
+    <div class="type-meta">20–22px / 600 / #FFFFFF</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:15px; font-weight:400; color:#A8B2BD;">Body Base — 正文用银灰</div>
+    <div class="type-meta">15–16px / 400 / #A8B2BD / line-height 1.6</div>
+  </div>
+  <div class="type-sample">
+    <div style="font-size:13px; color:#6B7785;">Caption — 注释、说明用钢铁灰</div>
+    <div class="type-meta">13–14px / 400 / #6B7785</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section">
+  <div class="section-label">07 / Spacing & Radius</div>
+  <h2 class="section-title">间距 & 圆角</h2>
+
+  <h3 style="font-size: 14px; font-weight: 600; color: #FFFFFF; margin: 0 0 16px;">间距系统</h3>
   <div class="spacing-row">
     <div class="spacing-item"><div class="spacing-block" style="width:4px; height:24px;"></div><div class="spacing-value">4px</div></div>
     <div class="spacing-item"><div class="spacing-block" style="width:8px; height:24px;"></div><div class="spacing-value">8px</div></div>
@@ -599,17 +848,9 @@
     <div class="spacing-item"><div class="spacing-block" style="width:32px; height:24px;"></div><div class="spacing-value">32px</div></div>
     <div class="spacing-item"><div class="spacing-block" style="width:48px; height:24px;"></div><div class="spacing-value">48px</div></div>
   </div>
+  <p style="font-size: 12px; color: #6B7785; margin-bottom: 32px;">4 | 8 | 12 | 16 | 24 | 32 | 48 | 64 | 80 | 96</p>
 
-  <p style="font-size: 13px; color: #A5A5A5;">4 | 8 | 12 | 16 | 24 | 32 | 48 | 64 | 80 | 96</p>
-</section>
-
-<hr class="section-divider">
-
-<!-- Radius Section -->
-<section class="section">
-  <div class="section-label">07 / Radius</div>
-  <h2 class="section-title">圆角系统</h2>
-
+  <h3 style="font-size: 14px; font-weight: 600; color: #FFFFFF; margin: 0 0 16px;">圆角系统</h3>
   <div class="radius-row">
     <div class="radius-item">
       <div class="radius-box" style="border-radius:4px;"></div>
@@ -632,7 +873,6 @@
 
 <hr class="section-divider">
 
-<!-- Elevation Section -->
 <section class="section">
   <div class="section-label">08 / Elevation</div>
   <h2 class="section-title">深度层级</h2>
@@ -640,22 +880,25 @@
   <div class="elevation-grid">
     <div class="elevation-card">
       <div class="elevation-label">Base</div>
-      <div class="elevation-desc">Navy Deepest 背景</div>
+      <div class="elevation-desc">Deep Sea 背景</div>
     </div>
     <div class="elevation-card">
       <div class="elevation-label">Card Surface</div>
-      <div class="elevation-desc">Navy (#083A67)</div>
+      <div class="elevation-desc">Ocean (#1E4976)</div>
     </div>
     <div class="elevation-card elevation-card--shadow">
       <div class="elevation-label">Elevated</div>
       <div class="elevation-desc">0 4px 16px rgba(0,0,0,0.3)</div>
+    </div>
+    <div class="elevation-card" style="background:linear-gradient(135deg, #0A2540 0%, #1E4976 50%, #D4AF37 100%); border-color: rgba(212,175,55,0.4);">
+      <div class="elevation-label" style="color:#FFF;">👑 Premium Surface</div>
+      <div class="elevation-desc" style="color:#F2D492;">深海蓝 → 海洋蓝 → 尊贵金</div>
     </div>
   </div>
 </section>
 
 <hr class="section-divider">
 
-<!-- Forms Section -->
 <section class="section">
   <div class="section-label">09 / Forms</div>
   <h2 class="section-title">表单元素</h2>
@@ -666,7 +909,7 @@
   </div>
   <div class="form-group">
     <label class="form-label">输入框（聚焦）</label>
-    <input class="form-input" type="text" value="聚焦状态" style="border-color:#FF9B7D;">
+    <input class="form-input" type="text" value="聚焦状态" style="border-color:#FF6B35;">
   </div>
   <div class="form-group">
     <label class="form-label">输入框（错误）</label>
@@ -675,7 +918,8 @@
 </section>
 
 <footer class="footer">
-  UPerform 设计系统 — 由 <a href="https://github.com/VoltAgent/voltagent" target="_blank" rel="noopener noreferrer">VoltAgent</a> 团队维护
+  UPerform 设计系统 — 4 层色彩体系 (PRIMARY · NEUTRALS · SECONDARY · ACCENT) ·
+  <a href="https://github.com/VoltAgent/voltagent" target="_blank" rel="noopener noreferrer">VoltAgent</a> 团队维护
 </footer>
 
 </body>
