@@ -22,14 +22,23 @@
     --up-silver:        #A8B2BD;
     --up-mist:          #F5F7FA;
     --up-white:         #FFFFFF;
-    /* ========== SECONDARY (辅助色) - 金色系 ========== */
-    --up-prestige:      #D4AF37;   /* Brand Secondary - 高级感 */
+    /* ========== SECONDARY (辅助色) - 金色系 (基础色) ========== */
+    /* ⚠️ 这些 hex 颜色只用于"构造渐变的中间色",禁止直接当 background-color 纯色使用 */
+    --up-prestige:      #D4AF37;   /* 中间色 */
     --up-prestige-hi:   #E8C547;
     --up-prestige-lo:   #B8941F;
     --up-prestige-edge: #9A7B1A;
-    --up-champagne:     #F2D492;
+    --up-champagne:     #F2D492;   /* 中间色 */
     --up-champagne-hi:  #FFF4D6;
     --up-champagne-lo:  #D9BC6E;
+    /* ========== SECONDARY (辅助色) - 金色系 (渐变变量) 🆕 ========== */
+    /* 这些是"金色"的真正形态 —— 100% 渐变,绝无纯色 */
+    --up-gold-gradient:        linear-gradient(135deg, #E8C547 0%, #D4AF37 50%, #B8941F 100%);
+    --up-gold-gradient-soft:   linear-gradient(135deg, #E8C547 0%, #F2D492 50%, #D4AF37 100%);
+    --up-gold-gradient-border: linear-gradient(135deg, #E8C547 0%, #B8941F 100%);
+    --up-champagne-gradient:   linear-gradient(135deg, #FFF4D6 0%, #F2D492 50%, #D9BC6E 100%);
+    --up-champagne-gradient-text: linear-gradient(135deg, #FFF4D6 0%, #F2D492 50%, #D9BC6E 100%);
+    --up-gold-text:            linear-gradient(135deg, #E8C547 0%, #F2D492 50%, #D4AF37 100%);
     /* ========== ACCENT (点缀色) - 橙色系 ========== */
     --up-vibrant:       #FF6B35;   /* Brand Accent - 行动信号 */
     --up-vibrant-dark:  #E55A2B;
@@ -83,13 +92,14 @@
   .nav-links a:hover { color: var(--up-white); }
   .nav-cta {
     display: inline-block;
-    background: var(--up-vibrant);
+    background: linear-gradient(135deg, var(--up-prestige-hi) 0%, var(--up-prestige) 50%, var(--up-prestige-lo) 100%);
     color: var(--up-white);
     padding: 8px 20px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
+    border: 1px solid var(--up-prestige-edge);
   }
 
   /* Hero Section */
@@ -125,7 +135,7 @@
   }
   .accent-bar {
     height: 4px;
-    background: linear-gradient(90deg, var(--up-vibrant), var(--up-coral));
+    background: linear-gradient(90deg, var(--up-prestige-hi), var(--up-prestige), var(--up-prestige-lo));
     margin-bottom: 48px;
   }
 
@@ -264,8 +274,11 @@
     padding: 24px;
   }
   .card-gold {
-    background: linear-gradient(135deg, var(--up-champagne-hi) 0%, var(--up-champagne) 100%);
-    border-left: 4px solid var(--up-prestige);
+    background: var(--up-champagne-gradient);
+    border-left: 4px solid transparent;
+    background-image: linear-gradient(135deg, #FFF4D6 0%, #F2D492 50%, #D9BC6E 100%), var(--up-gold-gradient-border);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     border-radius: 0 8px 8px 0;
     padding: 16px 20px;
     box-shadow: inset 0 0 0 1px rgba(255,248,220,0.4);
@@ -282,11 +295,32 @@
     border-radius: 0 8px 8px 0;
     padding: 16px 20px;
   }
+  /* 🆕 海洋蓝 + 尊贵金字卡片 (标志性奢华组合) */
+  .card-ocean-gold {
+    background: linear-gradient(135deg, #0A2540 0%, #1E4976 100%);
+    border-left: 4px solid transparent;
+    background-image: linear-gradient(135deg, #0A2540 0%, #1E4976 100%), var(--up-gold-gradient-border);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
   .card h3 { font-size: 16px; font-weight: 600; color: var(--up-white); margin-bottom: 8px; }
   .card p { font-size: 13px; color: var(--up-silver); }
   .card-gold h3 { color: var(--up-deep-sea); }
   .card-gold p { color: var(--up-slate); }
   .card-warm h3 { color: var(--up-vibrant); }
+  /* 🆕 海洋蓝+金字卡片:标题用金色渐变文字,正文用冰川蓝 */
+  .card-ocean-gold h3 {
+    background: var(--up-gold-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 700;
+  }
+  .card-ocean-gold p { color: var(--up-glacier); }
 
   /* Badge */
   .badge-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 32px; }
@@ -303,13 +337,45 @@
   .badge-coral { background: var(--up-coral); color: var(--up-white); }
   .badge-sky { background: var(--up-horizon); color: var(--up-white); }
   .badge-gold {
-    background: linear-gradient(135deg, var(--up-prestige-hi) 0%, var(--up-prestige) 50%, var(--up-prestige-lo) 100%);
+    background: var(--up-gold-gradient);
     color: var(--up-white);
     border: 1px solid var(--up-prestige-edge);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
   }
-  .badge-warm { background: var(--up-champagne); color: var(--up-deep-sea); }
+  .badge-warm { background: var(--up-champagne-gradient); color: var(--up-deep-sea); }
   .badge-neutral { background: rgba(255,255,255,0.05); color: var(--up-silver); border: 1px solid rgba(255,255,255,0.15); }
+  /* 🆕 海洋蓝 + 尊贵金字渐变 badge (标志性奢华) */
+  .badge-ocean-gold {
+    background: var(--up-ocean);
+    border: 1px solid transparent;
+    background-image: linear-gradient(#1E4976, #1E4976), var(--up-gold-gradient-border);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  .badge-ocean-gold span {
+    background: var(--up-gold-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  /* 🆕 深海蓝 + 香槟金字渐变 badge (更深邃版本) */
+  .badge-deep-gold {
+    background: linear-gradient(135deg, #0A2540 0%, #1E4976 100%);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: inset 0 1px 0 rgba(255, 215, 100, 0.15);
+  }
+  .badge-deep-gold span {
+    background: var(--up-champagne-gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
 
   /* Spacing Row */
   .spacing-row { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
@@ -360,10 +426,16 @@
     transition: border-color 0.2s;
   }
   .form-input:focus { border-color: var(--up-vibrant); }
-  .form-input--error { border-color: var(--up-coral); }
+  /* 错误态采用金色渐变描边 - 橙色已极度克制(全场 ≤ 1 处,示例) */
+  .form-input--error {
+    border: 1px solid transparent;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), var(--up-gold-gradient-border);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
   .form-input::placeholder { color: var(--up-steel-text); }
 
-  /* 3 Rules Box */
+  /* 4 Rules Box */
   .rules-box {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.1);
@@ -386,12 +458,13 @@
     height: 24px;
     line-height: 24px;
     text-align: center;
-    background: var(--up-vibrant);
+    background: var(--up-gold-gradient);
     color: var(--up-white);
     border-radius: 50%;
     font-size: 12px;
     font-weight: 700;
     margin-right: 10px;
+    border: 1px solid var(--up-prestige-edge);
   }
 
   /* Page-Type Allocation Table */
@@ -448,7 +521,7 @@
   <span class="nav-brand">awesome-design-md</span>
   <ul class="nav-links">
     <li><a href="#colors">4 层色彩</a></li>
-    <li><a href="#rules">3 条铁律</a></li>
+    <li><a href="#rules">4 条铁律</a></li>
     <li><a href="#page-type">页面类型</a></li>
     <li><a href="#components">组件</a></li>
   </ul>
@@ -633,17 +706,18 @@
 
 <hr class="section-divider">
 
-<!-- 3 Rules Section -->
+<!-- 4 Rules Section -->
 <section class="section" id="rules">
-  <div class="section-label">02 / Three Critical Rules</div>
-  <h2 class="section-title">3 条使用铁律</h2>
-  <p class="section-desc">这 3 条铁律是整个色彩体系的灵魂——保证主色不被稀释、CTA 不被淹没、金色不流于廉价。</p>
+  <div class="section-label">02 / Four Critical Rules</div>
+  <h2 class="section-title">4 条使用铁律</h2>
+  <p class="section-desc">这 4 条铁律是整个色彩体系的灵魂——保证主色不被稀释、CTA 不被淹没、金色不流于廉价、金属感不被油漆感破坏。</p>
 
   <div class="rules-box">
     <ul class="rules-list">
-      <li><span class="rules-num">1</span><strong>橙色是"放大镜",不是"油漆"</strong> — 整场不超过 3 处橙色元素(按钮 + 1-2 个关键数据),多了就失去强调意义。</li>
+      <li><span class="rules-num">1</span><strong>橙色是"放大镜",不是"油漆"</strong> — 整场不超过 3 处橙色元素(按钮 + 1-2 个关键数据),多了就失去强调意义。<strong style="color:var(--up-prestige);">金色系已承担强调与点缀职责,是橙色的优先替代</strong>。</li>
       <li><span class="rules-num">2</span><strong>金色永远搭配深色</strong> — 尊贵金 + 深海蓝 = 经典奢华;香槟金 + 雾白 = 轻柔优雅。<span style="color:var(--up-vibrant); font-weight:600;">金色不要放在冰川蓝上(会糊)</span>。</li>
       <li><span class="rules-num">3</span><strong>文字层级用灰色系统,蓝/橙/金不参与正文</strong> — 正文只走 <code style="background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:3px;">#1A1A1A → #3D4852 → #6B7785</code> 的灰阶。蓝是装饰色,不是文字色。</li>
+      <li><span class="rules-num">4</span><strong>🆕 金色一律使用渐变,禁止纯色</strong> — 尊贵金/香槟金是金属色,纯色 = 廉价 = 油漆感。<strong>所有金色元素(背景/底色/按钮/描边/文字)100% 渐变</strong>;金字必须用 <code style="background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:3px;">background-clip: text</code> 渐变技术,绝不能 <code style="background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:3px;">color: #D4AF37</code>。</li>
     </ul>
   </div>
 </section>
@@ -777,7 +851,7 @@
     </div>
     <div class="card-gold">
       <h3>👑 金色暖卡片</h3>
-      <p>香槟金渐变背景、尊贵金左边框、用于高级引用</p>
+      <p>香槟金渐变背景、🆕 金色渐变描边、用于高级引用</p>
     </div>
     <div class="card-info">
       <h3>冰川蓝信息卡片</h3>
@@ -786,6 +860,10 @@
     <div class="card-warm">
       <h3>🚀 活力橙暖卡片</h3>
       <p>半透明活力橙背景、活力橙左边框、用于重点 CTA</p>
+    </div>
+    <div class="card-ocean-gold">
+      <h3>👑 海洋蓝+金字(标志性奢华)</h3>
+      <p>海洋蓝底 + 🆕 金色文字渐变（background-clip: text）+ 金色渐变描边 + 深阴影</p>
     </div>
   </div>
 
@@ -797,13 +875,41 @@
     <span class="badge badge-gold">👑 SECONDARY</span>
     <span class="badge badge-warm">CHAMPAGNE</span>
     <span class="badge badge-neutral">NEUTRAL</span>
+    <span class="badge badge-ocean-gold"><span>👑 OCEAN GOLD</span></span>
+    <span class="badge badge-deep-gold"><span>👑 DEEP GOLD</span></span>
   </div>
 </section>
 
 <hr class="section-divider">
 
 <section class="section">
-  <div class="section-label">06 / Typography (灰阶文字)</div>
+  <div class="section-label">06 / 🆕 金字渐变 (铁律 #4 样本)</div>
+  <h2 class="section-title">金字渐变 — 深色背景上的金属字</h2>
+  <p class="section-desc">深色背景上的金色文字必须用 <code style="background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:3px;">background-clip: text</code> 渐变技术,让字本身呈现金属光泽。绝不能 <code style="background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:3px;">color: #D4AF37</code> 写死。</p>
+
+  <div style="background: linear-gradient(135deg, #0A2540 0%, #1E4976 100%); padding: 48px 32px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08);">
+    <div style="font-size: 14px; color: #A8B2BD; margin-bottom: 8px; letter-spacing: 2px;">UPerform · SIGNATURE COMBINATION</div>
+    <h3 style="font-size: 42px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; background: linear-gradient(135deg, #E8C547 0%, #F2D492 50%, #D4AF37 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">海洋蓝 + 尊贵金字</h3>
+    <p style="font-size: 15px; color: #E8F2FC; line-height: 1.7; max-width: 600px;">深海蓝铺底,金属质感的金色文字浮于其上,营造"深海藏金"的视觉张力。用于高端封面、Hero 标题、奖项大数字、VIP 标识、限量版标签。</p>
+  </div>
+
+  <h3 style="font-size: 14px; font-weight: 600; color: var(--up-white); margin: 24px 0 12px;">对比演示:渐变金字 vs 纯色金字(廉价感)</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+    <div style="background: #1E4976; padding: 24px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+      <div style="font-size: 11px; color: #4A8FD8; margin-bottom: 6px; letter-spacing: 1px;">✅ 渐变金字 (推荐)</div>
+      <div style="font-size: 32px; font-weight: 700; background: linear-gradient(135deg, #E8C547 0%, #F2D492 50%, #D4AF37 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">金属光泽</div>
+    </div>
+    <div style="background: #1E4976; padding: 24px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+      <div style="font-size: 11px; color: #FF6B35; margin-bottom: 6px; letter-spacing: 1px;">❌ 纯色金字 (廉价)</div>
+      <div style="font-size: 32px; font-weight: 700; color: #D4AF37;">油漆感</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section">
+  <div class="section-label">07 / Typography (灰阶文字)</div>
   <h2 class="section-title">字体层级 — 文字只用灰阶</h2>
   <p class="section-desc">遵循铁律 #3:正文只走灰阶。蓝/橙/金不参与正文。</p>
 
@@ -836,7 +942,7 @@
 <hr class="section-divider">
 
 <section class="section">
-  <div class="section-label">07 / Spacing & Radius</div>
+  <div class="section-label">08 / Spacing & Radius</div>
   <h2 class="section-title">间距 & 圆角</h2>
 
   <h3 style="font-size: 14px; font-weight: 600; color: #FFFFFF; margin: 0 0 16px;">间距系统</h3>
@@ -874,7 +980,7 @@
 <hr class="section-divider">
 
 <section class="section">
-  <div class="section-label">08 / Elevation</div>
+  <div class="section-label">09 / Elevation</div>
   <h2 class="section-title">深度层级</h2>
 
   <div class="elevation-grid">
@@ -892,7 +998,7 @@
     </div>
     <div class="elevation-card" style="background:linear-gradient(135deg, #0A2540 0%, #1E4976 50%, #D4AF37 100%); border-color: rgba(212,175,55,0.4);">
       <div class="elevation-label" style="color:#FFF;">👑 Premium Surface</div>
-      <div class="elevation-desc" style="color:#F2D492;">深海蓝 → 海洋蓝 → 尊贵金</div>
+      <div class="elevation-desc" style="background: linear-gradient(135deg, #FFF4D6 0%, #F2D492 50%, #D9BC6E 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">深海蓝 → 海洋蓝 → 尊贵金</div>
     </div>
   </div>
 </section>
@@ -900,7 +1006,7 @@
 <hr class="section-divider">
 
 <section class="section">
-  <div class="section-label">09 / Forms</div>
+  <div class="section-label">10 / Forms</div>
   <h2 class="section-title">表单元素</h2>
 
   <div class="form-group">
