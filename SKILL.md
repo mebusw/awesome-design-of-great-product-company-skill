@@ -5,12 +5,12 @@ description: 查询指定公司/产品的设计系统（DESIGN.md）。当用户
 
 # Design-MD Query Skill
 
-从 `design-md/` 目录读取指定公司的 DESIGN.md，并以结构化方式呈现设计系统给用户或提供给 AI agent 使用。
+从 `docs/` 目录读取指定公司的 DESIGN.md，并以结构化方式呈现设计系统给用户或提供给 AI agent 使用。
 
 ## 每个品牌目录的文件结构
 
 ```
-design-md/<slug>/
+docs/<slug>/
 ├── DESIGN.md        ← 主设计系统文档（必读）
 ├── README.md        ← 简短说明
 ├── preview.html     ← 亮色预览页
@@ -55,12 +55,12 @@ design-md/<slug>/
 ### Step 2：读取 DESIGN.md
 
 ```bash
-cat design-md/<slug>/DESIGN.md
+cat docs/<slug>/DESIGN.md
 ```
 
 **若 slug 不存在**，先模糊搜索：
 ```bash
-ls design-md/ | grep -i "<keyword>"
+ls docs/ | grep -i "<keyword>"
 ```
 若仍无结果，列出完整品牌列表并推荐最相似的选项。
 
@@ -93,10 +93,10 @@ ls design-md/ | grep -i "<keyword>"
 ## 使用示例
 
 **用户**：查一下 Spotify 的设计  
-→ `cat design-md/spotify/DESIGN.md` → 展示鲜绿 #1DB954、暗色背景、Circular 字体等规范，和preview文件
+→ `cat docs/spotify/DESIGN.md` → 展示鲜绿 #1DB954、暗色背景、Circular 字体等规范，和preview文件
 
 **用户**：帮我用 Vercel 风格做个登录页  
-→ 先读 `design-md/vercel/DESIGN.md` → 提取设计 → 生成符合黑白精准美学的登录页
+→ 先读 `docs/vercel/DESIGN.md` → 提取设计 → 生成符合黑白精准美学的登录页
 
 **用户**：给我看看 Mistral 的颜色  
-→ slug 映射为 `mistral.ai` → `cat design-md/mistral.ai/DESIGN.md` → 展示紫色调色板
+→ slug 映射为 `mistral.ai` → `cat docs/mistral.ai/DESIGN.md` → 展示紫色调色板
