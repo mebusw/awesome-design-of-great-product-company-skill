@@ -1,5 +1,143 @@
-# Awesome Design of Great Product Company
+---
+layout: default
+title: Awesome Design of Great Product Company
+description: >-
+  Curated design systems of 60+ world-class products — ready to drop into
+  your project and feed to any AI coding agent.
+---
 
-## Examples
-- [UPerform](./uperform/preview.html), [UPerform (Dark)](./uperform/preview-dark.html)
-- [Apple](./apple/preview.html), [Apple (Dark)](./apple/preview-dark.html)
+<style>
+  .brand-hero {
+    margin: 2rem 0 2.5rem;
+    padding: 1.75rem 1.5rem;
+    background: linear-gradient(135deg, #f6f8fa 0%, #eef2f7 100%);
+    border: 1px solid #d0d7de;
+    border-radius: 12px;
+  }
+  .brand-hero h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .brand-hero p {
+    margin: 0;
+    color: #57606a;
+    font-size: 1.05rem;
+  }
+  .brand-hero .meta {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #6e7781;
+  }
+  .brand-category {
+    margin: 2.25rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #d0d7de;
+    font-size: 1.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .brand-category .count {
+    margin-left: auto;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #6e7781;
+  }
+  .brand-grid {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+  }
+  .brand-card {
+    padding: 0.85rem 1rem;
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  }
+  .brand-card:hover {
+    border-color: #0969da;
+    box-shadow: 0 1px 4px rgba(9, 105, 218, 0.15);
+  }
+  .brand-card .name {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+    color: #1f2328;
+  }
+  .brand-card .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  .brand-card .links a {
+    color: #0969da;
+    text-decoration: none;
+  }
+  .brand-card .links a:hover {
+    text-decoration: underline;
+  }
+  .brand-card .links .sep {
+    color: #afb8c1;
+  }
+  .brand-card .files {
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    color: #6e7781;
+  }
+  .brand-card .files a {
+    color: #6e7781;
+    text-decoration: none;
+  }
+  .brand-card .files a:hover {
+    color: #0969da;
+    text-decoration: underline;
+  }
+</style>
+
+<div class="brand-hero">
+  <h1>Awesome Design of Great Product Company</h1>
+  <p>
+    Curated design systems extracted from {{ site.data.brands | size }}+
+    world-class products — each ready to drop into your project and feed to
+    any AI coding agent.
+  </p>
+  <p class="meta">
+    Every brand folder ships with a <code>DESIGN.md</code>,
+    <code>README.md</code>, plus light &amp; dark visual catalogs
+    (<code>preview.html</code> / <code>preview-dark.html</code>).
+  </p>
+</div>
+
+{% for category in site.data.categories %}
+  {% assign items = site.data.brands | where: "category", category.id %}
+  {% if items.size > 0 %}
+<h2 class="brand-category">
+  <span>{{ category.emoji }} {{ category.name }}</span>
+  <span class="count">{{ items.size }} brand{{ items.size | pluralize }}</span>
+</h2>
+<ul class="brand-grid">
+  {% for brand in items %}
+  <li class="brand-card">
+    <span class="name">{{ brand.name }}</span>
+    <span class="links">
+      <a href="./{{ brand.slug }}/preview.html">Light</a>
+      <span class="sep">·</span>
+      <a href="./{{ brand.slug }}/preview-dark.html">Dark</a>
+    </span>
+    <span class="files">
+      <a href="./{{ brand.slug }}/DESIGN.md">DESIGN.md</a>
+      ·
+      <a href="./{{ brand.slug }}/README.md">README</a>
+    </span>
+  </li>
+  {% endfor %}
+</ul>
+  {% endif %}
+{% endfor %}

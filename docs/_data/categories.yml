@@ -1,0 +1,24 @@
+- id: ai-ml
+  name: AI & Machine Learning
+  emoji: 🤖
+- id: dev-tools
+  name: Developer Tools
+  emoji: 🛠️
+- id: infra-cloud
+  name: Infrastructure & Cloud
+  emoji: ☁️
+- id: design-productivity
+  name: Design & Productivity
+  emoji: 🎨
+- id: fintech
+  name: Fintech & Crypto
+  emoji: 💸
+- id: enterprise-consumer
+  name: Enterprise & Consumer
+  emoji: 🏢
+- id: automotive
+  name: Automotive
+  emoji: 🚗
+- id: consulting
+  name: Consulting
+  emoji: 💼
