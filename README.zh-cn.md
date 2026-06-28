@@ -10,9 +10,16 @@
 
 ## 快速开始
 
+### 安装
+
+```bash
+npx skills add https://github.com/mebusw/awesome-design-of-great-product-company-skill
+```
+
 ### 查询品牌设计
 
 ```
+/design-md-query
 查一下 Spotify 的设计
 帮我用 Vercel 风格做个登录页
 给我看看 Apple 的颜色和字体

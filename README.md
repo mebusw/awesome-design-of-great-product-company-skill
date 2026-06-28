@@ -10,9 +10,16 @@ EN | [简体中文](README.zh-cn.md)
 
 ## Quick Start
 
+### Installation
+
+```bash
+npx skills add https://github.com/mebusw/awesome-design-of-great-product-company-skill
+```
+
 ### Query a brand design
 
 ```
+/design-md-query
 Look up Spotify's design system
 Build me a login page in Vercel's style
 Show me Apple's colors and typography
