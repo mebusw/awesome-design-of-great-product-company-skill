@@ -4,7 +4,8 @@ EN | [简体中文](README.zh-cn.md)
   
 > Curated design system documents extracted from 58 world-class products — ready to drop into your project and feed to any AI coding agent.
 
-[DESIGN.md](https://stitch.withgoogle.com/docs/design-md/overview/) is a plain-text design system format introduced by Google Stitch. This repo provides **ready-to-use DESIGN.md files** extracted from real products — Spotify's vivid green, Vercel's precision black-and-white, Apple's controlled drama, and more.
+[Demos](https://www.jackyshen.com/awesome-design-of-great-product-company-skill/)
+
 
 ---
 
@@ -130,3 +131,5 @@ Copy design-md/apple/DESIGN.md into your project, then prompt:
 ## License
 
 MIT — Use freely for personal and commercial projects.
+
+Thanks to [DESIGN.md](https://stitch.withgoogle.com/docs/design-md/overview/) is a plain-text design system format introduced by Google Stitch. This repo provides **ready-to-use DESIGN.md files** extracted from real products — Spotify's vivid green, Vercel's precision black-and-white, Apple's controlled drama, and more.

@@ -4,7 +4,8 @@
 
 > 精心整理的 58 个世界级产品设计系统风格 — 可直接放入项目，供任何 AI 编码 agent 使用。
 
-[DESIGN.md](https://stitch.withgoogle.com/docs/design-md/overview/) 是 Google Stitch 推出的纯文本设计系统格式。本仓库提供从真实产品中提取的**可直接使用的 DESIGN.md 文件** — 包括 Spotify 的鲜明绿色、Vercel 的精准黑白美学、Apple 的克制戏剧感等。
+
+[演示页](https://www.jackyshen.com/awesome-design-of-great-product-company-skill/)
 
 ---
 
@@ -127,3 +128,5 @@ design-md/<品牌>/
 ## License
 
 MIT — 可自由用于个人和商业项目。
+
+致谢： [DESIGN.md](https://stitch.withgoogle.com/docs/design-md/overview/) 是 Google Stitch 推出的纯文本设计系统格式。本仓库提供从真实产品中提取的**可直接使用的 DESIGN.md 文件** — 包括 Spotify 的鲜明绿色、Vercel 的精准黑白美学、Apple 的克制戏剧感等。
