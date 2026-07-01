@@ -20,7 +20,7 @@ npx skills add https://github.com/mebusw/awesome-design-of-great-product-company
 ### 查询品牌设计
 
 ```
-/design-md-query
+/awesome-design-of-great-product-company
 查一下 Spotify 的设计
 帮我用 Vercel 风格做个登录页
 给我看看 Apple 的颜色和字体

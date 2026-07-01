@@ -1,11 +1,12 @@
 ---
-name: design-md-query
-description: 查询指定公司/产品的设计系统（DESIGN.md）。当用户提到想了解某个品牌的设计风格、颜色、字体、UI规范，或者说"给我看看 X 的设计"、"查一下 spotify 的设计系统"、"帮我用 apple 风格"、"读取 design-md"、"用 XX 风格帮我做页面"等，立即使用本 skill。支持品牌关键词模糊匹配，例如输入 "apple"、"spotify"、"claude"、"vercel" 等均可触发。只要用户提到品牌名称 + 设计/风格/UI/颜色/字体，必须使用本 skill。
+name: awesome-design-of-great-product-company
+description: Query a brand's DESIGN.md (a plain-text design-system format) and present the spec — color palette, typography, components, layout principles, do's and don'ts — back to the user or to another AI agent. Use when the user asks about a product's design style, colors, fonts, or UI conventions, wants a page built in a specific brand's look (e.g. "build a login page in Vercel style", "show me Spotify's colors", "use Apple's typography"), or references DESIGN.md directly. Triggers on brand names like apple, spotify, claude, vercel, linear, stripe, notion, and the rest of the 58 curated brands — even when the user doesn't say "design system" explicitly.
+argument-hint: "[COMPANY_NAME]"
 ---
 
-# Design-MD Query Skill
+#  Query Skill of Brand Guidelines and Design System
 
-从 `docs/` 目录读取指定公司的 DESIGN.md，并以结构化方式呈现设计系统给用户或提供给 AI agent 使用。
+从 `docs/` 目录读取指定公司 `COMPANY_NAME` 的 DESIGN.md，并以结构化方式呈现设计系统给用户或提供给 AI agent 使用。
 
 ## 每个品牌目录的文件结构
 
@@ -82,12 +83,28 @@ ls docs/ | grep -i "<keyword>"
 - 是否需要基于此设计系统生成 UI 组件或页面？
 - 是否需要将 DESIGN.md 内容输出为可复用的格式？
 
-## 错误处理
+## Gotchas
 
-| 情况 | 处理方式 |
-|------|---------|
-| slug 不存在 | 模糊匹配 + 列出完整品牌表 |
-| DESIGN.md 缺失 | 列出目录内现有文件 |
+### Brand directories use dot-suffixes for some names
+
+The directory slug is not always a simple lowercase of the brand name. Five brands have a dot-suffix in their folder name:
+
+| User may say | Directory slug |
+|---|---|
+| mistral / mistral ai | `mistral.ai` |
+| together / together ai | `together.ai` |
+| opencode | `opencode.ai` |
+| linear | `linear.app` |
+| xai / grok | `x.ai` |
+
+For everything else, lowercase the brand name and strip spaces. If the slug doesn't exist, `ls docs/ | grep -i "<keyword>"` will catch typos before reporting failure to the user.
+
+### Other edge cases
+
+| Situation | Handling |
+|---|---|
+| Slug does not exist | Fuzzy match + show the full brand list |
+| `DESIGN.md` missing inside the slug folder | List existing files in that folder |
 
 
 ## 使用示例

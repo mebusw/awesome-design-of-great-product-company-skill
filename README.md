@@ -20,7 +20,7 @@ npx skills add https://github.com/mebusw/awesome-design-of-great-product-company
 ### Query a brand design
 
 ```
-/design-md-query
+/awesome-design-of-great-product-company
 Look up Spotify's design system
 Build me a login page in Vercel's style
 Show me Apple's colors and typography
