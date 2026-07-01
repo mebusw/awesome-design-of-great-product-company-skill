@@ -1,5 +1,5 @@
 ---
-name: awesome-design-of-great-product-company
+name: awesome-design-of-great-product-company-skill
 description: Query a brand's DESIGN.md (a plain-text design-system format) and present the spec — color palette, typography, components, layout principles, do's and don'ts — back to the user or to another AI agent. Use when the user asks about a product's design style, colors, fonts, or UI conventions, wants a page built in a specific brand's look (e.g. "build a login page in Vercel style", "show me Spotify's colors", "use Apple's typography"), or references DESIGN.md directly. Triggers on brand names like apple, spotify, claude, vercel, linear, stripe, notion, and the rest of the 58 curated brands — even when the user doesn't say "design system" explicitly.
 argument-hint: "[COMPANY_NAME]"
 ---
