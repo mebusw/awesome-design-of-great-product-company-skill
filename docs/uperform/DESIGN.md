@@ -28,6 +28,8 @@ UPerform（优普丰）是一家专业Scrum/敏捷咨询公司，品牌视觉采
 - 按钮圆角 6px — 柔和但不失专业
 - 专业字体：思源黑体（Noto Sans SC）/ 微软雅黑（中文）+ Source Sans Pro（英文）
 
+> ✅ **WCAG AA 合规状态**：主色蓝系（Ocean / Deep Sea）与白/冰川蓝/雾白的文字路径均 ≥ 8:1（AAA）；灰阶路径在合适场景下均达 AA；金/粉橙辅助色按钮统一为"渐变背景 + 海洋蓝深字"模式（CR ≥ 4.5）。详见 [§2 WCAG AA 合规速查](#wcag-aa-合规速查-正文-451--大字-31--ui-组件-31)。
+
 ## 2. Color Palette & Roles
 
 ### 品牌主色：蓝色系
@@ -42,14 +44,14 @@ UPerform（优普丰）是一家专业Scrum/敏捷咨询公司，品牌视觉采
 
 ### 中性色：灰色系
 
-| 名称 | HEX | 用途 |
-|------|-----|------|
-| Carbon Black（碳黑） | `#1A1A1A` | 最深正文、富黑强调 |
-| Slate Grey（石板灰） | `#3D4852` | **强文本**，标题文字 |
-| Steel Grey（钢铁灰） | `#6B7785` | **正文**，段落文字 |
-| Silver Grey（银灰） | `#A8B2BD` | **边框**，分隔线 |
-| Mist White（雾白） | `#F5F7FA` | **背景**，次级区块底色 |
-| White | `#FFFFFF` | 纯白卡片、主背景 |
+| 名称 | HEX | 用途 | 禁忌 |
+|------|-----|------|------|
+| Carbon Black（碳黑） | `#1A1A1A` | 最深正文、富黑强调（亮色场景） | 暗色场景改用 `#FFFFFF` |
+| Slate Grey（石板灰） | `#3D4852` | **强文本**，标题文字、跨场景安全 | — |
+| Steel Grey（钢铁灰） | `#6B7785` | **正文**，段落文字（**仅亮色场景用**） | ❌ 暗色场景下用，CR 仅 3.41 |
+| Silver Grey（银灰） | `#A8B2BD` | **边框**，分隔线 | ❌ 任何场景下做正文色（CR 2.15 / 2.81） |
+| Mist White（雾白） | `#F5F7FA` | **背景**，次级区块底色 | — |
+| White | `#FFFFFF` | 纯白卡片、主背景、深色场景正文 | ❌ 浅金/浅粉橙渐变背景上的文字 |
 
 ### 辅助色：两套互斥方案（**任选其一**）
 
@@ -119,6 +121,83 @@ background-clip: text;
 | **NEUTRALS** | 灰色系 (5色) | 碳黑/石板/钢铁/银/雾白 | 功能性 | 文字层级、边框、背景、阴影 |
 | **SECONDARY** | 辅助色 (2 套互斥) | A. 金色 `#EABA1D` / B. 粉橙 `#CE6E7B` | 装饰性 / 强调性 | 高级感 + 强调点缀 — VIP 标识、奖项、关键强调（≤ 3 处） |
 
+### WCAG AA 合规速查 (正文 4.5:1 · 大字 3:1 · UI 组件 3:1)
+
+> 测算方法：相对亮度 `L = 0.2126·R + 0.7152·G + 0.0722·B`（sRGB→linear），对比度 `CR = (L₁+0.05)/(L₂+0.05)`。
+
+#### 关键色值相对亮度
+
+| 色名 | HEX | L |
+|------|-----|---|
+| Deep Sea 深海蓝 | `#0A2540` | 0.0175 |
+| Ocean 海洋蓝 | `#1E4976` | 0.0636 |
+| Sky 天空蓝 | `#2E6BA8` | 0.1394 |
+| Horizon 地平蓝 | `#4A8FD8` | 0.2610 |
+| Glacier 冰川蓝 | `#E8F2FC` | 0.8770 |
+| Mist 雾白 | `#F5F7FA` | 0.9282 |
+| White | `#FFFFFF` | 1.0000 |
+| Carbon 碳黑 | `#1A1A1A` | 0.0103 |
+| Slate 石板灰 | `#3D4852` | 0.0624 |
+| Steel 钢铁灰 | `#6B7785` | 0.1803 |
+| Silver 银灰 | `#A8B2BD` | 0.4385 |
+| Gold 金 | `#EABA1D` | 0.5268 |
+| Blush 粉橙 | `#CE6E7B` | 0.2570 |
+| **#C8D1DA** (导航辅助) | `#C8D1DA` | 0.6265 |
+
+#### ✅ 文字 × 背景 对比度（合规组合）
+
+| 文字 | 背景 | CR | 阈值 | 用途 |
+|------|------|-----|------|------|
+| `#FFFFFF` | Ocean / Deep Sea | 9.24 / 13.73 | ≥ 4.5 ✅ AAA | Hero、品牌主色按钮 |
+| `#FFFFFF` | Glacier | 8.16 | ≥ 4.5 ✅ AAA | 卡片正文 |
+| Ocean `#1E4976` | Glacier | 8.16 | ≥ 4.5 ✅ AAA | 信息卡片标题 |
+| Carbon `#1A1A1A` | White / Mist | 17.41 / 15.5+ | ≥ 4.5 ✅ AAA | 标题、富黑强调 |
+| Slate `#3D4852` | White | 9.34 | ≥ 4.5 ✅ AAA | 强文本、H3/H4 |
+| Sky `#2E6BA8` | White | 5.54 | ≥ 4.5 ✅ AA | section-label |
+| Steel `#6B7785` | White | 4.56 | ≥ 4.5 ✅ AA (临界) | 亮色场景正文（仅白底） |
+| Silver `#A8B2BD` | Deep Sea | 7.24 | ≥ 4.5 ✅ AAA | 暗色场景正文、深底边框 |
+| `#C8D1DA` | Ocean | 5.96 | ≥ 4.5 ✅ AA | Ocean 背景上的次级链接 |
+| Ocean `#1E4976` | Gold 渐变 (mid) | 5.08 | ≥ 4.5 ✅ AA | 金色按钮文字（**font-weight ≥ 600**） |
+| Ocean `#1E4976` | Blush 渐变 (mid) | 4.55 | ≥ 4.5 ✅ AA | 粉橙按钮文字（**font-weight ≥ 600**） |
+| Gold 渐变 | Deep Sea 渐变 | 8.5–10.9 | ≥ 4.5 ✅ AAA | 海洋蓝+金字卡片标题 |
+| Blush 渐变 | Deep Sea 渐变 | 4.55–10.45 | ≥ 4.5 ✅ AA | 海洋蓝+粉橙字卡片标题 |
+
+#### ❌ 系统性反模式（这些组合不能用作正文色）
+
+| 失败组合 | CR | 失败原因 |
+|---------|-----|---------|
+| `#FFFFFF` on Gold 渐变 | 1.6–1.8 | 浅色底 + 白字 = 油漆感 |
+| `#FFFFFF` on Blush 渐变 | 2.2–3.4 | 同上 |
+| Silver `#A8B2BD` on White | 2.15 | 边框色当正文，亮场景下消失 |
+| Steel `#6B7785` on Mist `#F5F7FA` | 4.25 | 浅底上钢灰不够深 |
+| Steel `#6B7785` on Glacier `#E8F2FC` | 4.03 | 浅底上钢灰不够深 |
+| Steel `#6B7785` on Deep Sea | 3.41 | 暗色场景下钢灰消失 |
+| Silver `#A8B2BD` on Ocean | 4.30 | 海洋蓝背景上银灰差 0.20 |
+| Horizon `#4A8FD8` on White | 3.38 | 地平蓝作正文色不够深 |
+| Horizon `#4A8FD8` on Ocean | 2.74 | 地平蓝在深底上变深（背景对它而言偏深） |
+| Gold-lo `#B8950F` on Mist | 2.64 | 渐变最深端作正文色 |
+
+#### 6 项系统修复（一次性覆盖全部 AA 失败）
+
+| # | 位置 | 旧 | 新 | 旧 CR → 新 CR |
+|---|------|------|------|--------------|
+| 1 | `.up-btn-secondary`（金按钮） | `#FFFFFF` on 金渐变 | `#1E4976` Ocean + `font-weight:700` | 1.6–1.8 → 5.08+ |
+| 2 | `.up-btn-blush`（粉橙按钮） | `#FFFFFF` on 粉橙渐变 | `#1E4976` Ocean + `font-weight:600` | 2.2–3.4 → 4.55+ |
+| 3 | `.nav-links a`（亮色版） | Silver on Ocean | `#C8D1DA` + `font-weight:600` | 4.30 → 5.96 |
+| 4 | `.color-swatch-role` | Silver on White | Steel `#6B7785` | 2.15 → 4.56 |
+| 5 | `.type-meta` / `.spacing-value` / `.radius-label` 等 | Steel on 浅底 | Slate `#3D4852` | 4.03–4.25 → 8.7+ |
+| 6 | `.up-btn-sky` / `.badge-sky` | Horizon on White | Sky `#2E6BA8` | 3.38 → 5.54 |
+
+> 暗色版（`preview-dark.html`）沿用同根原则，但用色对调：**浅底场景用 Steel/Silver（暗底 CR 7.24+），深字场景用 Ocean/Deep Sea。** Silver 在深底上是合规正文色（7.24），在浅底上不是（2.15）；Sky 反过来，深底上变深（2.81），浅底上合规（5.54）。
+
+#### 角色纪律（系统级规则）
+
+1. **辅助色渐变背景上的文字必须是 Ocean `#1E4976` 或更深**（`font-weight ≥ 600`），绝不 `#FFFFFF`。
+2. **Silver `#A8B2BD` 只做边框（1px decorative），不做正文色**。在亮色场景下做正文会消失（2.15）。
+3. **Steel `#6B7785` 仅在白底做正文**。一旦落在 Mist/Glacier 浅底或深底上，必须升级为 Slate。
+4. **Horizon `#4A8FD8` 永远不当正文色**。在亮底 CR 3.38，在深底 2.74 — 两个场景都不过。它是装饰/图标色，不是文字色。
+5. **正文落地前先看背景**：浅底（White/Mist/Glacier）走 Carbon/Slate/Steel 三阶梯；深底（Deep Sea/Ocean）走 White/Glacier/Silver 三阶梯；浅金/浅粉橙渐变底走 Ocean。
+
 ## 3. Typography Rules
 
 ### 字体家族
@@ -169,29 +248,31 @@ background-clip: text;
 
 **方案 A — 金色 Premium 按钮（金色系专用）**
 - Background: `linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%)`
-- Text: `#FFFFFF`
+- Text: `#1E4976`（**海洋蓝**——AA 合规，深字配浅渐变底）
 - Border: 1px solid `#9A7B1A`
 - Padding: 10px 24px
 - Radius: 6px
+- **Font-weight: 700**（粗体加重深字，提升金色最深端可读性）
 - 叠加白色高光：`box-shadow: inset 0 1px 0 rgba(255,255,255,0.3)`
 - Hover: 加深渐变 + 轻微上浮
 
 **方案 B — 粉橙 Premium 按钮（粉橙系专用）**
 - Background: `linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%)`
-- Text: `#FFFFFF`
+- Text: `#1E4976`（**海洋蓝**——AA 合规，深字配浅渐变底）
 - Border: 1px solid `#8B4754`
 - Padding: 10px 24px
 - Radius: 6px
+- **Font-weight: 600**（粗体加重深字）
 - 叠加柔光：`box-shadow: inset 0 1px 0 rgba(255,220,210,0.3)`
 - Hover: 加深渐变 + 轻微上浮
 
 **Secondary 按钮（描边）**
 - Background: transparent
-- Text: `#4A8FD8`
-- Border: 2px solid `#4A8FD8`
+- Text: `#2E6BA8`（**天空蓝**，Horizon 在浅底上 CR 仅 3.38 不过 AA，换 Sky CR 5.54 ✅）
+- Border: 2px solid `#2E6BA8`
 - Padding: 10px 24px
 - Radius: 6px
-- Hover: Background `#4A8FD8`, text `#FFFFFF`
+- Hover: Background `#2E6BA8`, text `#FFFFFF`
 
 **Ghost 按钮（深色背景上）**
 - Background: transparent
@@ -299,14 +380,14 @@ background-clip: text;
   letter-spacing: 0.5px;
 }
 .up-badge-primary  { background: #1E4976; color: #FFFFFF; }
-.up-badge-sky      { background: transparent; color: #4A8FD8; border: 1px solid #4A8FD8; }
+.up-badge-sky      { background: transparent; color: #2E6BA8; border: 1px solid #2E6BA8; }  /* 浅底用 Sky(5.54)，深底用 Silver(7.24) */
 
 /* 方案 A — 金色系 Badge */
-.up-badge-gold     { background: linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%); color: #FFFFFF; border: 1px solid #9A7B1A; }
+.up-badge-gold     { background: linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%); color: #1E4976; border: 1px solid #9A7B1A; font-weight: 700; }
 .up-badge-warm     { background: linear-gradient(135deg, #FFE9B0 0%, #F2D677 50%, #D9BC4D 100%); color: #1A1A1A; }
 
 /* 方案 B — 粉橙系 Badge */
-.up-badge-blush    { background: linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%); color: #FFFFFF; border: 1px solid #8B4754; }
+.up-badge-blush    { background: linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%); color: #1E4976; border: 1px solid #8B4754; font-weight: 600; }
 .up-badge-peach    { background: linear-gradient(135deg, #FFE0D7 0%, #FFC7B9 50%, #E89F8E 100%); color: #1A1A1A; }
 
 /* 🆕 方案 A — 海洋蓝 + 金字渐变 badge (标志性奢华) */
@@ -474,11 +555,12 @@ background-clip: text;
 - ✅ 品牌周年、限时活动
 - ✅ 强调标签、数据亮点（替代原橙色的强调职责）
 - ✅ 🆕 **海洋蓝背景 + 粉橙字渐变**（标志性格式组合）——粉橙字用 `background-clip: text` 渐变技术
-- ✅ 🆕 **粉橙渐变背景 + 白色文字**（粉橙作为背景时，文字用纯白 `#FFFFFF`）
+- ✅ 🆕 **粉橙渐变背景 + 海洋蓝文字**（粉橙作为背景时，文字用海洋蓝 `#1E4976` + `font-weight ≥ 600`）——**不是白字**，白字 CR 仅 2.2–3.4 失败 AA
 
 **排版与组件规范**
-- 深色背景上的文字使用白色或 `#A8B2BD`
+- 深色背景上的文字使用白色或 `#A8B2BD`（两者在深底上 CR 7.24+ 均达 AA）
 - 浅色信息块使用 `#E8F2FC`（冰川蓝）或 `#F5F7FA`（雾白）
+- **辅助色渐变背景上的文字统一用 Ocean `#1E4976` + `font-weight ≥ 600`**（不要白字，详见 §2 WCAG 节）
 - 按钮圆角使用 `6px`
 - 间距使用官方间距系统（4/8/12/16/24/32/48/64/80/96px）
 - 封面/Banner 使用深海蓝渐变 + **辅助色渐变强调**
@@ -494,6 +576,7 @@ background-clip: text;
 - ❌ 低对比度组合
 - ❌ 过度使用（全场不超过 3 处辅助色元素）
 - ❌ **把辅助色文字当纯色用**（如 `color: #EABA1D`）——必须 `background-clip: text` 渐变,否则字会"贴不住"深色背景
+- ❌ **白字压在浅金/浅粉橙渐变背景上**（CR 1.6–3.4 失败 AA）——必须用海洋蓝深字
 
 **3 层体系反模式**
 - ❌ 不使用品牌色系以外的颜色（如大红色、紫色）
@@ -521,6 +604,11 @@ background-clip: text;
 3. **文字层级用灰色系统，蓝/辅助色不参与正文**
    正文只走 `#1A1A1A` → `#3D4852` → `#6B7785` 的灰阶。
    蓝/辅助色都是装饰色，不是文字色——避免大段彩色文字，既疲劳又掉档次。
+   **同时遵守 WCAG AA 对比度阈值（正文 4.5:1，大字 3:1，UI 组件 3:1）**。
+   - Silver `#A8B2BD` 只做边框，不做正文（白底 CR 2.15 失败）
+   - Steel `#6B7785` 仅在白底做正文（Mist/Glacier/深底上失败）
+   - Horizon `#4A8FD8` 永远不当正文色
+   - 完整规则见 [§2 WCAG AA 合规速查](#wcag-aa-合规速查-正文-451--大字-31--ui-组件-31)
 
 4. **🆕 辅助色一律使用渐变,禁止纯色**（新铁律）
    无论是金属色（Gold/Golden Glow）还是温润色（Blush/Peach），纯色使用 = 廉价感 = 油漆/荧光笔。
