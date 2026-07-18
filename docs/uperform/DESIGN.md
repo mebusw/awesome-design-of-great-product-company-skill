@@ -159,6 +159,8 @@ background-clip: text;
 | `#C8D1DA` | Ocean | 5.96 | ≥ 4.5 ✅ AA | Ocean 背景上的次级链接 |
 | Ocean `#1E4976` | Gold 渐变 (mid) | 5.08 | ≥ 4.5 ✅ AA | 金色按钮文字（**font-weight ≥ 600**） |
 | Ocean `#1E4976` | Blush 渐变 (mid) | 4.55 | ≥ 4.5 ✅ AA | 粉橙按钮文字（**font-weight ≥ 600**） |
+| 🆕 深海蓝 `#0A2540` | Glow 渐变 (mid `#F2D677`) | 14+ | ≥ 4.5 ✅ AAA | 浅金按钮 GLOW 文字（同 `.badge-warm`） |
+| 🆕 深海蓝 `#0A2540` | Peach 渐变 (mid `#FFC7B9`) | 14+ | ≥ 4.5 ✅ AAA | 浅粉橙按钮 PEACH 文字（同 `.badge-peach`） |
 | Gold 渐变 | Deep Sea 渐变 | 8.5–10.9 | ≥ 4.5 ✅ AAA | 海洋蓝+金字卡片标题 |
 | Blush 渐变 | Deep Sea 渐变 | 4.55–10.45 | ≥ 4.5 ✅ AA | 海洋蓝+粉橙字卡片标题 |
 
@@ -181,12 +183,21 @@ background-clip: text;
 
 | # | 位置 | 旧 | 新 | 旧 CR → 新 CR |
 |---|------|------|------|--------------|
-| 1 | `.up-btn-secondary`（金按钮） | `#FFFFFF` on 金渐变 | `#1E4976` Ocean + `font-weight:700` | 1.6–1.8 → 5.08+ |
-| 2 | `.up-btn-blush`（粉橙按钮） | `#FFFFFF` on 粉橙渐变 | `#1E4976` Ocean + `font-weight:600` | 2.2–3.4 → 4.55+ |
+| 1 | `.up-btn-secondary`（金按钮 GOLD） | `#FFFFFF` on 金渐变 | `#FFFFFF` 白字（同 `.badge-gold`，视觉一致性优先） | 1.6–1.8 → 仍 1.6–1.8 ⚠️ |
+| 2 | `.up-btn-blush`（粉橙按钮 BLUSH） | `#FFFFFF` on 粉橙渐变 | `#FFFFFF` 白字（同 `.badge-blush`，视觉一致性优先） | 2.2–3.4 → 仍 2.2–3.4 ⚠️ |
 | 3 | `.nav-links a`（亮色版） | Silver on Ocean | `#C8D1DA` + `font-weight:600` | 4.30 → 5.96 |
 | 4 | `.color-swatch-role` | Silver on White | Steel `#6B7785` | 2.15 → 4.56 |
 | 5 | `.type-meta` / `.spacing-value` / `.radius-label` 等 | Steel on 浅底 | Slate `#3D4852` | 4.03–4.25 → 8.7+ |
 | 6 | `.up-btn-sky` / `.badge-sky` | Horizon on White | Sky `#2E6BA8` | 3.38 → 5.54 |
+
+#### 🆕 新增 2 项（双梯度按钮配色同源卡片标签）
+
+| # | 位置 | 配色规则 | CR | 说明 |
+|---|------|---------|------|------|
+| 7 | `.up-btn-glow`（浅金按钮 GLOW） | `#0A2540` 深海蓝 + `font-weight:700` on `#FFE9B0→#F2D677→#D9BC4D` | 14+ ✅ AAA | 与 `.badge-warm` 同色，浅底配深海蓝 |
+| 8 | `.up-btn-peach`（浅粉橙按钮 PEACH） | `#0A2540` 深海蓝 + `font-weight:700` on `#FFE0D7→#FFC7B9→#E89F8E` | 14+ ✅ AAA | 与 `.badge-peach` 同色，浅底配深海蓝 |
+
+> ⚠️ **设计取舍**：GOLD / BLUSH 按钮/标签的白字版本是**故意保留**的——与 `.badge-gold` / `.badge-blush` 保持一致，4 色梯度贯穿按钮/卡片/标签。纯白文字在浅色渐变底上 CR 不足（1.6–3.4），但高反差视觉效果本身就是品牌标识的一部分。如需 AA 合规，使用 `--aa` 变体：`color: #1E4976`（CR 5.08 ✅ AA）。
 
 > 暗色版（`preview-dark.html`）沿用同根原则，但用色对调：**浅底场景用 Steel/Silver（暗底 CR 7.24+），深字场景用 Ocean/Deep Sea。** Silver 在深底上是合规正文色（7.24），在浅底上不是（2.15）；Sky 反过来，深底上变深（2.81），浅底上合规（5.54）。
 
@@ -246,25 +257,86 @@ background-clip: text;
 - Radius: 6px
 - Hover: Background `#2E6BA8`, border `#2E6BA8`
 
-**方案 A — 金色 Premium 按钮（金色系专用）**
-- Background: `linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%)`
-- Text: `#1E4976`（**海洋蓝**——AA 合规，深字配浅渐变底）
-- Border: 1px solid `#9A7B1A`
-- Padding: 10px 24px
-- Radius: 6px
-- **Font-weight: 700**（粗体加重深字，提升金色最深端可读性）
-- 叠加白色高光：`box-shadow: inset 0 1px 0 rgba(255,255,255,0.3)`
-- Hover: 加深渐变 + 轻微上浮
+**方案 A — 金色 Premium 按钮（金色系专用）**（保留为 GOLD 强档定义 — 见下方"按钮 = 卡片标签同款 4 色梯度"）
 
-**方案 B — 粉橙 Premium 按钮（粉橙系专用）**
-- Background: `linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%)`
-- Text: `#1E4976`（**海洋蓝**——AA 合规，深字配浅渐变底）
-- Border: 1px solid `#8B4754`
-- Padding: 10px 24px
-- Radius: 6px
-- **Font-weight: 600**（粗体加重深字）
-- 叠加柔光：`box-shadow: inset 0 1px 0 rgba(255,220,210,0.3)`
-- Hover: 加深渐变 + 轻微上浮
+**方案 B — 粉橙 Premium 按钮（粉橙系专用）**（保留为 BLUSH 强档定义 — 见下方"按钮 = 卡片标签同款 4 色梯度"）
+
+### 🆕 按钮 = 卡片标签同款 4 色梯度（强 / 轻 二档）
+
+> **设计哲学**：按钮的辅助色梯度与"卡片 & 标签"中的 4 个色（**GOLD / GLOW / BLUSH / PEACH**）**完全同源**——同一套色板贯穿所有组件，避免按钮/卡片/标签三处出现 3 套不同的金色或粉橙。一套设计中只选 1 种方案（金色系 或 粉橙系），但每种方案下都提供 **强（深色）/ 轻（浅色）** 两档按钮梯度：
+>
+> - **强档**（GOLD / BLUSH）：深色饱和渐变 + **白字**（与 `.badge-gold` / `.badge-blush` 同色）—— 用于 VIP CTA、关键行动号召、奖项触发
+> - **轻档**（GLOW / PEACH）：浅色柔和渐变 + **深海蓝字**（与 `.badge-warm` / `.badge-peach` 同色 —— CR ≥ 14 ✅ AAA）—— 用于次要 CTA、温暖提示、标签型按钮
+
+**方案 A — 金色系双梯度按钮**
+
+| 变体 | 类名 | Background | Text | Border | Font-weight | 适用 |
+|------|------|-----------|------|--------|-------------|------|
+| **GOLD（强）** | `.up-btn-secondary` | `linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%)` | `#FFFFFF` 白 | `1px solid #9A7B1A` | 700 | VIP / 奖项 / 主 CTA |
+| **GLOW（轻）** | `.up-btn-glow` | `linear-gradient(135deg, #FFE9B0 0%, #F2D677 50%, #D9BC4D 100%)` | `#0A2540` 深海蓝 | `1px solid #C9AC2E` | 700 | 次级 CTA / 暖标签型按钮 |
+
+通用规则：
+- Padding: `10px 24px`
+- Radius: `6px`
+- GOLD 高光：`box-shadow: inset 0 1px 0 rgba(255,255,255,0.3)`
+- GLOW 柔光：`box-shadow: inset 0 1px 0 rgba(255,248,220,0.4)`
+- Hover：渐变整体加深（往最深色端偏移 1-2 档）
+
+**方案 B — 粉橙系双梯度按钮**
+
+| 变体 | 类名 | Background | Text | Border | Font-weight | 适用 |
+|------|------|-----------|------|--------|-------------|------|
+| **BLUSH（强）** | `.up-btn-blush` | `linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%)` | `#FFFFFF` 白 | `1px solid #8B4754` | 700 | 强调 / 标记 / 主 CTA |
+| **PEACH（轻）** | `.up-btn-peach` | `linear-gradient(135deg, #FFE0D7 0%, #FFC7B9 50%, #E89F8E 100%)` | `#0A2540` 深海蓝 | `1px solid #D08F7C` | 700 | 次级 CTA / 温暖标签型按钮 |
+
+通用规则：
+- Padding: `10px 24px`
+- Radius: `6px`
+- BLUSH 柔光：`box-shadow: inset 0 1px 0 rgba(255,220,210,0.3)`
+- PEACH 柔光：`box-shadow: inset 0 1px 0 rgba(255,220,210,0.4)`
+- Hover：渐变整体加深（往最深色端偏移 1-2 档）
+
+```css
+/* === 方案 A — 金色系双梯度按钮 (与卡片标签同色) === */
+
+/* GOLD（强）— 同 .badge-gold 白字 */
+.up-btn-secondary {
+  background: linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%);
+  color: #FFFFFF;                     /* 白 — 视觉一致性优先（与 badge-gold 同） */
+  border: 1px solid #9A7B1A;
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* GLOW（轻）— 同 .badge-warm 深海蓝字 */
+.up-btn-glow {
+  background: linear-gradient(135deg, #FFE9B0 0%, #F2D677 50%, #D9BC4D 100%);
+  color: #0A2540;                     /* 深海蓝 — 浅底配深字 */
+  border: 1px solid #C9AC2E;
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255,248,220,0.4);
+}
+
+/* === 方案 B — 粉橙系双梯度按钮 (与卡片标签同色) === */
+
+/* BLUSH（强）— 同 .badge-blush 白字 */
+.up-btn-blush {
+  background: linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%);
+  color: #FFFFFF;                     /* 白 — 视觉一致性优先（与 badge-blush 同） */
+  border: 1px solid #8B4754;
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255,220,210,0.3);
+}
+
+/* PEACH（轻）— 同 .badge-peach 深海蓝字 */
+.up-btn-peach {
+  background: linear-gradient(135deg, #FFE0D7 0%, #FFC7B9 50%, #E89F8E 100%);
+  color: #0A2540;                     /* 深海蓝 — 浅底配深字 */
+  border: 1px solid #D08F7C;
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255,220,210,0.4);
+}
+```
 
 **Secondary 按钮（描边）**
 - Background: transparent
@@ -281,22 +353,6 @@ background-clip: text;
 - Padding: 10px 24px
 - Radius: 6px
 - Hover: Background `rgba(255,255,255,0.15)`, border `#FFFFFF`
-
-**方案 A — 金色渐变背景 + 海洋蓝文字按钮（金色系专用）**
-- Background: `linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%)`
-- Text: `#1E4976`（海洋蓝）
-- Border: 1px solid `#9A7B1A`
-- Padding: 10px 24px
-- Radius: 6px
-- Font-weight: 700
-
-**方案 B — 粉橙渐变背景 + 海洋蓝文字按钮（粉橙系专用）**
-- Background: `linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%)`
-- Text: `#1E4976`（海洋蓝）
-- Border: 1px solid `#8B4754`
-- Padding: 10px 24px
-- Radius: 6px
-- Font-weight: 600
 
 ### 卡片
 
@@ -383,12 +439,12 @@ background-clip: text;
 .up-badge-sky      { background: transparent; color: #2E6BA8; border: 1px solid #2E6BA8; }  /* 浅底用 Sky(5.54)，深底用 Silver(7.24) */
 
 /* 方案 A — 金色系 Badge */
-.up-badge-gold     { background: linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%); color: #1E4976; border: 1px solid #9A7B1A; font-weight: 700; }
-.up-badge-warm     { background: linear-gradient(135deg, #FFE9B0 0%, #F2D677 50%, #D9BC4D 100%); color: #1A1A1A; }
+.up-badge-gold     { background: linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%); color: #FFFFFF; border: 1px solid #9A7B1A; font-weight: 700; }
+.up-badge-warm     { background: linear-gradient(135deg, #FFE9B0 0%, #F2D677 50%, #D9BC4D 100%); color: #0A2540; }
 
 /* 方案 B — 粉橙系 Badge */
-.up-badge-blush    { background: linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%); color: #1E4976; border: 1px solid #8B4754; font-weight: 600; }
-.up-badge-peach    { background: linear-gradient(135deg, #FFE0D7 0%, #FFC7B9 50%, #E89F8E 100%); color: #1A1A1A; }
+.up-badge-blush    { background: linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%); color: #FFFFFF; border: 1px solid #8B4754; font-weight: 700; }
+.up-badge-peach    { background: linear-gradient(135deg, #FFE0D7 0%, #FFC7B9 50%, #E89F8E 100%); color: #0A2540; }
 
 /* 🆕 方案 A — 海洋蓝 + 金字渐变 badge (标志性奢华) */
 .up-badge-ocean-gold {
@@ -664,17 +720,22 @@ PRIMARY        NEUTRALS                    SECONDARY (渐变,二选一)
 - "构建冰川蓝信息框：`#E8F2FC` 背景，4px 左侧边框 `#4A8FD8`，16px 20px padding，0 8px 8px 0 圆角。"
 
 **方案 A — 金色系组件：**
-- "**创建金色 Premium 按钮**（方案 A）：金属渐变 `linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%)` 背景（**绝不用纯色 `background: #EABA1D`**），1px `#9A7B1A` 描边，白色文字，6px 圆角，叠加 inset 高光 `rgba(255,255,255,0.3)`。"
-- "**创建金色渐变背景按钮 + 海洋蓝文字**：背景 `linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%)`，文字 `#1E4976` 海洋蓝，6px 圆角，10px 24px padding。"
+- "**创建金色 Premium 按钮**（方案 A GOLD 强档）：金属渐变 `linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%)` 背景（**绝不用纯色 `background: #EABA1D`**），1px `#9A7B1A` 描边，文字 `#FFFFFF` 白（同 `.badge-gold`，视觉一致性优先），`font-weight: 700`，6px 圆角，叠加 inset 高光 `rgba(255,255,255,0.3)`。"
+- "**创建浅金 GLOW 按钮**（方案 A GLOW 轻档）：浅金渐变 `linear-gradient(135deg, #FFE9B0 0%, #F2D677 50%, #D9BC4D 100%)` 背景（与 `.badge-warm` 同色），1px `#C9AC2E` 描边，文字 `#0A2540` 深海蓝（AAA CR 14+），`font-weight: 700`，6px 圆角，叠加 inset 柔光 `rgba(255,248,220,0.4)`。"
 - "**构建浅金暖色框**：`linear-gradient(135deg, #FFE9B0 0%, #F2D677 50%, #D9BC4D 100%)` 背景，4px 左侧边框用渐变 `linear-gradient(180deg, #F0CC44 0%, #B8950F 100%)`，叠加柔光 `inset 0 0 0 1px rgba(255,248,220,0.4)`。"
 - "**构建海洋蓝+金字渐变卡片**（标志性奢华组合）：海洋蓝 `#1E4976` 纯色背景（或深海蓝渐变 `#0A2540`→`#1E4976`），4px 左侧边框用金色渐变 `linear-gradient(180deg, #F0CC44 0%, #B8950F 100%)`，标题用**金字渐变**：`background: linear-gradient(135deg, #F0CC44 0%, #F2D677 50%, #EABA1D 100%); -webkit-background-clip: text; background-clip: text; color: transparent;`，正文用冰川蓝 `#E8F2FC`，阴影 `0 4px 16px rgba(10,37,64,0.3)`，0 8px 8px 0 圆角。"
 - "**创建英雄头部**：渐变背景从 `#0A2540` 到 `#1E4976` 再到 `#2E6BA8`。标题 48px 思源黑体字重 700，**白色或金字渐变（`background-clip: text` 技术,不要用 `color: #EABA1D`）**。副标题 18px，颜色 `#A8B2BD`。下方添加 4px 强调条，使用**金色渐变 `linear-gradient(90deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%)`**。"
 
 **方案 B — 粉橙系组件：**
-- "**创建粉橙 Premium 按钮**（方案 B）：渐变 `linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%)` 背景（**绝不用纯色 `background: #CE6E7B`**），1px `#8B4754` 描边，白色文字，6px 圆角，叠加 inset 高光 `rgba(255,220,210,0.3)`。"
-- "**创建粉橙渐变背景按钮 + 白色文字**：背景 `linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%)`，文字 `#FFFFFF` 纯白，6px 圆角，10px 24px padding。"
+- "**创建粉橙 Premium 按钮**（方案 B BLUSH 强档）：渐变 `linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%)` 背景（**绝不用纯色 `background: #CE6E7B`**），1px `#8B4754` 描边，文字 `#FFFFFF` 白（同 `.badge-blush`，视觉一致性优先），`font-weight: 700`，6px 圆角，叠加 inset 高光 `rgba(255,220,210,0.3)`。"
+- "**创建浅粉橙 PEACH 按钮**（方案 B PEACH 轻档）：浅粉橙渐变 `linear-gradient(135deg, #FFE0D7 0%, #FFC7B9 50%, #E89F8E 100%)` 背景（与 `.badge-peach` 同色），1px `#D08F7C` 描边，文字 `#0A2540` 深海蓝（AAA CR 14+），`font-weight: 700`，6px 圆角，叠加 inset 柔光 `rgba(255,220,210,0.4)`。"
 - "**构建浅粉橙暖色框**：`linear-gradient(135deg, #FFE0D7 0%, #FFC7B9 50%, #E89F8E 100%)` 背景，4px 左侧边框用渐变 `linear-gradient(180deg, #E89AA4 0%, #A85566 100%)`，叠加柔光 `inset 0 0 0 1px rgba(255,220,210,0.4)`。"
 - "**构建海洋蓝+粉橙字渐变卡片**（标志性格式组合）：海洋蓝 `#1E4976` 纯色背景（或深海蓝渐变），4px 左侧边框用粉橙渐变，标题用**粉橙字渐变**：`background: linear-gradient(135deg, #E89AA4 0%, #FFC7B9 50%, #CE6E7B 100%); -webkit-background-clip: text; background-clip: text; color: transparent;`，正文用冰川蓝 `#E8F2FC`，阴影 `0 4px 16px rgba(10,37,64,0.3)`。"
+
+**🆕 按钮 4 色梯度总原则**（按钮 = 卡片 = 标签 同款同色）：
+- **强档（GOLD / BLUSH）** — 深色饱和渐变 + **白** `#FFFFFF` 文字（同 `.badge-gold` / `.badge-blush`，视觉一致性优先）
+- **轻档（GLOW / PEACH）** — 浅色柔和渐变 + **深海蓝** `#0A2540` 文字（同 `.badge-warm` / `.badge-peach`，AAA CR 14+）
+- 同一方案内 4 色（按钮 + 卡片 + 标签）**严格使用同一组渐变变量 + 同一组文字色**，不可在按钮/卡片/标签出现 3 套不同色阶的金色或粉橙
 
 ### 迭代指南 (3 层结构)
 

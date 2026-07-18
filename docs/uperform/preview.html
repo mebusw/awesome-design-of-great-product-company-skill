@@ -254,16 +254,23 @@
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 32px;
   }
-  .button-item { text-align: center; }
+  .button-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .button-label {
     font-size: 10px;
     color: var(--up-steel-text);
     margin-top: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap;
+    align-self: stretch;
+    text-align: center;
   }
 
   /* Card Grid */
@@ -391,17 +398,19 @@
   /* 方案 A — 金色系 */
   .badge-gold {
     background: var(--up-gold-gradient);
-    color: var(--up-white);
+    color: #FFFFFF;
     border: 1px solid var(--up-gold-edge);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    font-weight: 700;
   }
   .badge-warm { background: var(--up-glow-gradient); color: var(--up-deep-sea); }
   /* 方案 B — 粉橙系 */
   .badge-blush {
     background: var(--up-blush-gradient);
-    color: var(--up-white);
+    color: #FFFFFF;
     border: 1px solid var(--up-blush-edge);
     box-shadow: inset 0 1px 0 rgba(255,220,210,0.3);
+    font-weight: 700;
   }
   .badge-peach { background: var(--up-peach-gradient); color: var(--up-deep-sea); }
   .badge-neutral { background: var(--up-mist); color: var(--up-slate); border: 1px solid var(--up-silver); }
@@ -896,38 +905,42 @@
     /* PRIMARY 主色按钮 - 海洋蓝 */
     .up-btn-primary { background: #1E4976; color: #FFFFFF; border-color: #1E4976; }
     .up-btn-primary:hover { background: #2E6BA8; border-color: #2E6BA8; }
-    /* SECONDARY 方案 A — 金色 Premium 按钮 */
+    /* SECONDARY 方案 A — 金色 Premium 按钮 (GOLD 强 · 白字 与 badge-gold 同色) */
     .up-btn-secondary {
       background: linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%);
-      color: #1E4976;
+      color: #FFFFFF;
       border: 1px solid #9A7B1A;
       font-weight: 700;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
     }
     .up-btn-secondary:hover { background: linear-gradient(135deg, #EABA1D 0%, #B8950F 50%, #9A7B1A 100%); }
-    /* SECONDARY 方案 B — 粉橙 Premium 按钮 */
+    /* SECONDARY 方案 B — 粉橙 Premium 按钮 (BLUSH 强 · 白字 与 badge-blush 同色) */
     .up-btn-blush {
       background: linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%);
-      color: #1E4976;
+      color: #FFFFFF;
       border: 1px solid #8B4754;
-      font-weight: 600;
+      font-weight: 700;
       box-shadow: inset 0 1px 0 rgba(255,220,210,0.3);
     }
     .up-btn-blush:hover { background: linear-gradient(135deg, #CE6E7B 0%, #A85566 50%, #8B4754 100%); }
-    /* 🆕 方案 A — 金色渐变背景 + 海洋蓝文字 */
-    .up-btn-gold-blue {
-      background: linear-gradient(135deg, #F0CC44 0%, #EABA1D 50%, #B8950F 100%);
-      color: #1E4976;
-      border: 1px solid #9A7B1A;
+    /* 🆕 方案 A — Glow 浅金渐变背景 + 深海蓝字 (与 badge-warm 同色) */
+    .up-btn-glow {
+      background: linear-gradient(135deg, #FFE9B0 0%, #F2D677 50%, #D9BC4D 100%);
+      color: #0A2540;
+      border: 1px solid #C9AC2E;
       font-weight: 700;
+      box-shadow: inset 0 1px 0 rgba(255,248,220,0.4);
     }
-    /* 🆕 方案 B — 粉橙渐变背景 + 海洋蓝文字 */
-    .up-btn-blush-blue {
-      background: linear-gradient(135deg, #E89AA4 0%, #CE6E7B 50%, #A85566 100%);
-      color: #1E4976;
-      border: 1px solid #8B4754;
-      font-weight: 600;
+    .up-btn-glow:hover { background: linear-gradient(135deg, #F2D677 0%, #D9BC4D 50%, #B89A2E 100%); }
+    /* 🆕 方案 B — Peach 浅粉橙渐变背景 + 深海蓝字 (与 badge-peach 同色) */
+    .up-btn-peach {
+      background: linear-gradient(135deg, #FFE0D7 0%, #FFC7B9 50%, #E89F8E 100%);
+      color: #0A2540;
+      border: 1px solid #D08F7C;
+      font-weight: 700;
+      box-shadow: inset 0 1px 0 rgba(255,220,210,0.4);
     }
+    .up-btn-peach:hover { background: linear-gradient(135deg, #FFC7B9 0%, #E89F8E 50%, #C07F6E 100%); }
     /* Sky Blue outline 描边 */
     .up-btn-sky { background: transparent; color: #2E6BA8; border-color: #2E6BA8; }
     .up-btn-sky:hover { background: #2E6BA8; color: #FFFFFF; }
@@ -948,27 +961,27 @@
     </div>
   </div>
 
-  <h3 style="font-size: 14px; font-weight: 600; color: #1E4976; margin: 24px 0 12px;">🆕 方案 A — 金色系按钮（二选一）</h3>
+  <h3 style="font-size: 14px; font-weight: 600; color: #1E4976; margin: 24px 0 12px;">🆕 方案 A — 金色系按钮（二选一 · GOLD / GLOW 双梯度）</h3>
   <div class="button-row">
     <div class="button-item">
-      <button class="up-btn up-btn-secondary">👑 SECONDARY</button>
-      <div class="button-label">金色渐变 + 海洋蓝字 (标准 · 700)</div>
+      <button class="up-btn up-btn-secondary">👑 GOLD</button>
+      <div class="button-label">Gold 深金渐变 + 白字 · 700 (强 · 同 badge-gold)</div>
     </div>
     <div class="button-item">
-      <button class="up-btn up-btn-gold-blue">👑 CTA</button>
-      <div class="button-label">金色渐变 + 海洋蓝字 (标准 · 700)</div>
+      <button class="up-btn up-btn-glow">✨ GLOW</button>
+      <div class="button-label">Glow 浅金渐变 + 深海蓝字 · 700 (轻 · 同 badge-warm)</div>
     </div>
   </div>
 
-  <h3 style="font-size: 14px; font-weight: 600; color: #1E4976; margin: 24px 0 12px;">🆕 方案 B — 粉橙系按钮（二选一）</h3>
+  <h3 style="font-size: 14px; font-weight: 600; color: #1E4976; margin: 24px 0 12px;">🆕 方案 B — 粉橙系按钮（二选一 · BLUSH / PEACH 双梯度）</h3>
   <div class="button-row">
     <div class="button-item">
-      <button class="up-btn up-btn-blush">🌸 SECONDARY</button>
-      <div class="button-label">粉橙渐变 + 海洋蓝字 (标准 · 600)</div>
+      <button class="up-btn up-btn-blush">🌸 BLUSH</button>
+      <div class="button-label">Blush 深粉橙渐变 + 白字 · 700 (强 · 同 badge-blush)</div>
     </div>
     <div class="button-item">
-      <button class="up-btn up-btn-blush-blue">🌸 CTA</button>
-      <div class="button-label">粉橙渐变 + 海洋蓝字 (标准 · 600)</div>
+      <button class="up-btn up-btn-peach">🍑 PEACH</button>
+      <div class="button-label">Peach 浅粉橙渐变 + 深海蓝字 · 700 (轻 · 同 badge-peach)</div>
     </div>
   </div>
 
